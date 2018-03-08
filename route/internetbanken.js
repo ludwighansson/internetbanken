@@ -47,7 +47,7 @@ router.get("/dashboard", (req, res) => {
 router.get("/accounts/:id", async (req, res) => {
     let id = req.params.id;
     let data = {
-        title: "Viewing accounts for user ID"
+        title: "Viewing accounts for user ID",
         customer: id
         };
 
