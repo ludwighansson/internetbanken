@@ -164,6 +164,7 @@ CALL swish(1, 2, 5000);
 -- ------------------------- --
 
 DROP PROCEDURE IF EXISTS getAllAccountsOnUserID;
+DROP PROCEDURE IF EXISTS createUser;
 
 DELIMITER //
 CREATE PROCEDURE getAllAccountsOnUserID(
@@ -178,6 +179,23 @@ BEGIN
 		JOIN kund AS k
 			ON b.Kund_idKund = k.idKund
     WHERE  k.idKund = id
+;
+END
+//
+
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE createUser(
+  fornamn VARCHAR(40),
+  efternamn VARCHAR(40),
+  fodd DATE,
+  adress VARCHAR(40),
+  ort VARCHAR(40),
+  pinkod INT(4)
+)
+BEGIN
+	INSERT INTO Kund (fornamn, efternamn, fodd, adress, ort, pinkod) VALUES (fornamn, efternamn, fodd, adress, ort, pinkod)
 ;
 END
 //
