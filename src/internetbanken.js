@@ -25,7 +25,7 @@ async function registerKund(fornamn, efternamn, fodd, adress, ort, pinkod) {
     return res;
 }
 
-async function showCusomter(id) {
+async function showCustomer(id) {
     let sql = `CALL showCustomer(?);`;
     let res;
 
