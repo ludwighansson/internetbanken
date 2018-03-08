@@ -1,7 +1,10 @@
+
+/* Everything properties */
 * {
     box-sizing: border-box;
 }
 
+/* Body properties */
 body {
     margin: 0px auto;
     font-family: Arial;
@@ -10,6 +13,7 @@ body {
     width: 1200px;
 }
 
+/* link hover color */
 li a:hover:not(.active) {
     background-color: lightgrey;
     border-radius: 7px;
@@ -22,6 +26,7 @@ li a:hover:not(.active) {
     background: white;
 }
 
+/* header h1 style */
 .header h1 {
     font-size: 50px;
 }
@@ -55,6 +60,11 @@ li a:hover:not(.active) {
     width: 70%;
 }
 
+/* Center column */
+.centercolumn {
+    width: 100%;
+}
+
 /* Right column */
 .rightcolumn {
     float: left;
@@ -63,10 +73,29 @@ li a:hover:not(.active) {
     padding-left: 20px;
 }
 
+/* Input field */
+.fieldsetinput {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Input form */
+.forminput {
+
+}
 /* Add a card effect for articles */
 .card {
     background-color: white;
     padding: 20px;
+    margin-top: 20px;
+}
+
+/* Add a card effect for articles */
+.card2 {
+    background-color: white;
+    padding: 20px 350px 20px 350px;
     margin-top: 20px;
 }
 
@@ -83,5 +112,43 @@ li a:hover:not(.active) {
     text-align: center;
     background: white;
     margin-top: 20px;
+}
 
+/* Input style */
+input[type=text], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Input style */
+input[type=number], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Submit */
+input[type=submit] {
+    width: 25%;
+    background-color: #333;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Submit */
+input[type=submit]:hover {
+    background-color: grey;
 }

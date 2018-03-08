@@ -1,19 +1,22 @@
 <%- include("../header", {title: title}); %>
+<%- include("../nav"); %>
+<div class="row">
+  <div class="centercolumn">
+    <div class="card2">
+       <form class="frominput" method="post">
+          <fieldset class="fieldsetinput">
+              <h1>Logga in</h1>
+              <legend></legend>
 
-<h1>Logga in</h1>
-
-<form class="label-left" method="post">
-    <fieldset>
-        <legend>Logga in</legend>
-
-        <label for="idKund">Kund id</label>
-        <input id="idKund" type="number" name="idKund">
-
-        <label for="pinkod">pinkod</label>
-        <input id="pinkod" type="number" name="pinkod">
-
-        <input type="submit" name="doit" value="Login">
-    </fieldset>
-</form>
+              <input id="idKund" type="text" name="fornamn" placeholder="Idkund..">
+              <br>
+              <input id="pinkod" type="number" name="pinkod" placeholder="Pinkod..">
+              <br>
+              <input type="submit" name="doit" value="Lägg till">
+          </fieldset>
+       </form>
+    </div>
+  </div>
+</div>
 
 <%- include("../footer"); %>
