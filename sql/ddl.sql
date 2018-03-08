@@ -136,29 +136,6 @@ DELIMITER ;
 
 
 
-START TRANSACTION;
-
-UPDATE bankkonto
-SET 
-	saldo = saldo + 10000
-WHERE 
-	idBankkonto = "1";
-    
-UPDATE bankkonto
-SET 
-	saldo = saldo - 10000
-WHERE
-	idBankkonto = "2";
-
-COMMIT;
-
-select * from bankkonto;
-
-SELECT * FROM logg;
-
-CALL swish(1, 2, 5000);
-
-
 -- ------------------------- --
 -- Stored Procedures --
 -- ------------------------- --
