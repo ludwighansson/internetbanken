@@ -1,7 +1,8 @@
 "use strict";
 
 module.exports = {
-    registerKund: registerKund
+    registerKund: registerKund,
+    showCustomer: showCustomer
 };
 
 const mysql  = require("promise-mysql");
@@ -21,5 +22,14 @@ async function registerKund(fornamn, efternamn, fodd, adress, ort, pinkod) {
     let res;
 
     res = await db.query(sql, [fornamn, efternamn, fodd, adress, ort, pinkod]);
+    return res;
+}
+
+async function showCusomter(id) {
+    let sql = `CALL showCustomer(?);`;
+    let res;
+
+    res = await db.query(sql, [id]);
+
     return res;
 }
