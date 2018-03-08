@@ -66,9 +66,10 @@ CALL getAllAccountsOnUserID(2);
     
     
     
-CALL addUser("Simon", "Stender", "1995-02-18", "Kungsmarksvägen 17", "Karlskrona", 1357);
+CALL createUser("Simon", "Stender", "1995-02-18", "Kungsmarksvägen 17", "Karlskrona", 1357);
+CALL addAccountToUser(2);
+CALL shareAccountWithUser(2, 1);
 
-    
     
     
     

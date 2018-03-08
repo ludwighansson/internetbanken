@@ -142,6 +142,8 @@ DELIMITER ;
 
 DROP PROCEDURE IF EXISTS getAllAccountsOnUserID;
 DROP PROCEDURE IF EXISTS createUser;
+DROP PROCEDURE IF EXISTS shareAccountWithUser;
+DROP PROCEDURE IF EXISTS addAccountToUser;
 
 DELIMITER //
 CREATE PROCEDURE getAllAccountsOnUserID(
@@ -198,11 +200,31 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE shareAccountWithUser(
   userID INT(11),
-  accountID INT(11)
+  accID INT(11)
 )
 BEGIN
     INSERT INTO accountManager(accountID, customerID)
-	VALUES (userID, @accountID);   
+	VALUES (userID, accID);   
+END
+//
+
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE addAccountToUser(
+  userID INT(11)
+)
+BEGIN
+	 INSERT INTO bankkonto(Kund_idKund)
+    VALUES (userID);
+    
+    SELECT idBankkonto AS id INTO @bankID
+	FROM bankkonto 
+	ORDER BY idBankkonto 
+    DESC LIMIT 1;
+
+    INSERT INTO accountManager(accountID, customerID)
+	VALUES (@bankID, userID);   
 END
 //
 
