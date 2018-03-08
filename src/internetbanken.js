@@ -26,10 +26,10 @@ async function registerKund(fornamn, efternamn, fodd, adress, ort, pinkod) {
 }
 
 async function showCustomer(id) {
-    let sql = `CALL showCustomer(?);`;
+    let sql = `CALL getAllAccountsOnUserID(?);`;
     let res;
 
     res = await db.query(sql, [id]);
 
-    return res;
+    return res[0];
 }
