@@ -1,8 +1,11 @@
+* {
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica, sans-serif;
+}
+
 body {
-    margin: 8px auto;
-    background: #fff;
-    width: 700px;
-    background-color: lightgray;
+    margin: 0px auto;
+    background: #efefef;
+    width: 800px;
     text-align: center;
 }
 
@@ -11,23 +14,19 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
-}
-
-li {
-    float: left;
 }
 
 li a {
     display: block;
-    color: white;
+    color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
 li a:hover:not(.active) {
-    background-color: #111;
+    background-color: lightgrey;
+    border-radius: 7px;
 }
 
 .active {
@@ -62,4 +61,52 @@ tr:hover {
 fieldset {
     width: 120px;
     margin: auto;
+}
+
+a {
+    text-decoration: none;
+    padding-left: 20px;
+    right: 20px;
+}
+
+.header-text a:link {
+    color: white;
+}
+
+.header-text a:visited {
+    color: white;
+}
+
+.header-text a:hover {
+    color: grey;
+}
+
+#header {
+    background: linear-gradient(#3b3b3b, #232323);
+    clear: left;
+    padding: 20px;
+    text-align: center;
+}
+
+#footer {
+    background-color: lightgrey;
+    clear: left;
+    padding: 10px;
+    text-align: center;
+}
+
+#link-tab {
+    width: 25%;
+    float: right;
+}
+
+#link-tab a {
+    text-align: center;
+}
+
+#container {
+    height: 322px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
 }
