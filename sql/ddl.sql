@@ -149,9 +149,7 @@ CREATE PROCEDURE getAllAccountsOnUserID(
 )
 BEGIN
 	SELECT 
-	k.idKund,
-    b.idBankkonto,
-    b.saldo
+	*
     FROM bankkonto AS b
 		JOIN kund AS k
 			ON b.Kund_idKund = k.idKund
@@ -164,16 +162,47 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE createUser(
-  fornamn VARCHAR(40),
-  efternamn VARCHAR(40),
-  fodd DATE,
-  adress VARCHAR(40),
-  ort VARCHAR(40),
-  pinkod INT(4)
+  cFornamn VARCHAR(40),
+  cEfternamn VARCHAR(40),
+  cFodd DATE,
+  cAdress VARCHAR(40),
+  cOrt VARCHAR(40),
+  cPinkod INT(4)
 )
 BEGIN
-	INSERT INTO Kund (fornamn, efternamn, fodd, adress, ort, pinkod) VALUES (fornamn, efternamn, fodd, adress, ort, pinkod)
-;
+	INSERT INTO Kund (fornamn, efternamn, fodd, adress, ort, pinkod) 
+    VALUES (cFornamn, cEfternamn, cFodd, cAdress, cOrt, cPinkod);
+    
+    SELECT idKund AS id INTO @kundID
+	FROM Kund 
+	ORDER BY idKund 
+    DESC LIMIT 1;
+    
+    INSERT INTO bankkonto(Kund_idKund)
+    VALUES (@kundID);
+    
+    SELECT idBankkonto AS id INTO @bankID
+	FROM bankkonto 
+	ORDER BY idBankkonto 
+    DESC LIMIT 1;
+    
+    INSERT INTO accountManager(accountID, customerID)
+	VALUES (@kundID, @bankID);
+
+    
+END
+//
+
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE shareAccountWithUser(
+  userID INT(11),
+  accountID INT(11)
+)
+BEGIN
+    INSERT INTO accountManager(accountID, customerID)
+	VALUES (userID, @accountID);   
 END
 //
 

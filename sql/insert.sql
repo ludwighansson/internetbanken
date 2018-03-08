@@ -66,7 +66,8 @@ CALL getAllAccountsOnUserID(2);
     
     
     
-    
+CALL addUser("Simon", "Stender", "1995-02-18", "Kungsmarksvägen 17", "Karlskrona", 1357);
+
     
     
     
