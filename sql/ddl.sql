@@ -45,17 +45,25 @@ CREATE TABLE IF NOT EXISTS `internetbanken`.`bankkonto` (
   INDEX `fk_Bankkonto_Kund_idx` (`Kund_idKund` ASC),
   CONSTRAINT `fk_Bankkonto_Kund`
     FOREIGN KEY (`Kund_idKund`)
-    REFERENCES `internetbanken`.`Kund` (`idKund`)
+    REFERENCES Kund (idKund)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+DROP TABLE IF EXISTS accountManager;
+CREATE TABLE IF NOT EXISTS accountManager (
+	accountID INT(11),
+    customerID INT(11),
+    FOREIGN KEY (customerID) REFERENCES Kund(idKund),
+    FOREIGN KEY (accountID) REFERENCES bankkonto(idBankkonto)
+);
 
 -- -----------------------------------------------------
 -- Table `internetbanken`.`Logg`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS logg;
 CREATE TABLE IF NOT EXISTS `internetbanken`.`logg` (
+  `action` VARCHAR(15) NOT NULL,
   `kontoNummer` INT NOT NULL,
   `saldo` INT NULL,
   `saldoTransaktion` INT NULL,
@@ -71,13 +79,28 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 DROP TRIGGER IF EXISTS loggUpdate;
+DROP TRIGGER IF EXISTS loggDelete;
+DROP TRIGGER IF EXISTS loggInsert;
+
+
 CREATE TRIGGER loggUpdate
 AFTER UPDATE
 ON bankkonto FOR EACH ROW
-INSERT INTO logg (kontoNummer, saldo, saldoTransaktion)
-VALUES (NEW.idBankkonto, NEW.saldo, NEW.saldo - OLD.saldo);
+INSERT INTO logg (action, kontoNummer, saldo, saldoTransaktion)
+VALUES ('UPDATE', NEW.idBankkonto, NEW.saldo, NEW.saldo - OLD.saldo);
 
 
+CREATE TRIGGER loggDelete
+AFTER DELETE
+ON bankkonto FOR EACH ROW
+INSERT INTO logg (action, kontoNummer, saldo, saldoTransaktion)
+VALUES ('DELETE', OLD.idBankkonto, OLD.saldo, OLD.saldo);
+
+CREATE TRIGGER loggInsert
+AFTER INSERT
+ON bankkonto FOR EACH ROW
+INSERT INTO logg (action, kontoNummer, saldo, saldoTransaktion)
+VALUES ('INSERT', NEW.idBankkonto, NEW.saldo, NEW.saldo);
 
 DROP PROCEDURE IF EXISTS swish;
 DELIMITER ;;
@@ -134,4 +157,43 @@ select * from bankkonto;
 SELECT * FROM logg;
 
 CALL swish(1, 2, 5000);
+
+
+-- ------------------------- --
+-- Stored Procedures --
+-- ------------------------- --
+
+DROP PROCEDURE IF EXISTS getAllAccountsOnUserID;
+
+DELIMITER //
+CREATE PROCEDURE getAllAccountsOnUserID(
+	id INT(11)
+)
+BEGIN
+	SELECT 
+	k.idKund,
+    b.idBankkonto,
+    b.saldo
+    FROM bankkonto AS b
+		JOIN kund AS k
+			ON b.Kund_idKund = k.idKund
+    WHERE  k.idKund = id
+;
+END
+//
+
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
 

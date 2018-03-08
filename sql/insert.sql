@@ -1,4 +1,7 @@
+DELETE  FROM bankkonto;
 DELETE FROM kund;
+
+
 INSERT INTO kund (fornamn, efternamn, fodd, adress, ort, pinkod)
 VALUES 
 ("Simon", "Stender", "1995-02-18", "Kungsmarksvägen 17", "Karlskrona", 1357),
@@ -9,8 +12,11 @@ VALUES
 ("Stefan", "Holm", "1984-01-20", "Hoppvägen 10", "Svanholm", 9753),
 ("Kevin", "Kevsson", "2005-12-24", "Olyckansväg 10", "Gävle", 1234);
 
-DELETE FROM bankkonto;
-INSERT INTO bankkonto (saldo, Kund_idKund)
+
+select * from kund;
+select * from accountManager;
+
+INSERT INTO bankkonto(saldo, Kund_idKund)
 VALUES 
 (95000, 1), 
 (90000, 2),
@@ -26,7 +32,44 @@ VALUES
 (40000, 2),
 (35000, 3),
 (30000, 4),
-(25000, 5),
-(0, 1337);
+(25000, 5)
+;
+INSERT INTO accountManager VALUES (1, 1);
+INSERT INTO accountManager VALUES (1, 2);
+INSERT INTO accountManager VALUES (1, 3);
+INSERT INTO accountManager VALUES (1, 4);
+select * from accountManager;
+
+SELECT * 
+	FROM bankkonto AS b
+		JOIN accountManager AS am
+			ON  b.idBankkonto = am.accountID
+		JOIN Kund AS k
+			ON k.idKund = am.customerID
+	WHERE am.accountID = 1
+;
 
 select * from bankkonto;
+
+
+SELECT 
+	k.idKund,
+    b.idBankkonto,
+    b.saldo
+    FROM bankkonto AS b
+		JOIN kund AS k
+			ON b.Kund_idKund = k.idKund
+    WHERE  k.idKund = 2
+;
+    
+CALL getAllAccountsOnUserID(2);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
