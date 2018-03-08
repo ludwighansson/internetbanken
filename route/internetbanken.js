@@ -44,10 +44,14 @@ router.get("/dashboard", (req, res) => {
     res.render("bankIndex/dashboard", data);
 });
 
-router.get("/accounts", (req, res) => {
+router.get("/accounts/:id", async (req, res) => {
+    let id = req.params.id;
     let data = {
-        title: "Viewing accounts for user ID"
-    };
+        title: "Viewing accounts for user ID",
+        customer: id
+        };
+
+    data.res = await bank.showCustomer(id);
 
     res.render("bankIndex/accounts", data);
 });

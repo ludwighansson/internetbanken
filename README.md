@@ -17,3 +17,6 @@ git add .               För alla filer ifrån mappen du står i
 
 ------- För mer info följ guiden -------
 http://rogerdudler.github.io/git-guide/
+
+
+simon e fett äckligt.

@@ -1,7 +1,8 @@
 "use strict";
 
 module.exports = {
-    registerKund: registerKund
+    registerKund: registerKund,
+    showCustomer: showCustomer
 };
 
 const mysql  = require("promise-mysql");
@@ -17,9 +18,18 @@ let db;
 })();
 
 async function registerKund(fornamn, efternamn, fodd, adress, ort, pinkod) {
-    let sql = `CALL registerKund(?,?,?,?,?,?)`;
+    let sql = `CALL createUser(?,?,?,?,?,?)`;
     let res;
 
     res = await db.query(sql, [fornamn, efternamn, fodd, adress, ort, pinkod]);
     return res;
+}
+
+async function showCustomer(id) {
+    let sql = `CALL getAllAccountsOnUserID(?);`;
+    let res;
+
+    res = await db.query(sql, [id]);
+
+    return res[0];
 }

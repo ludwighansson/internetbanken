@@ -1,5 +1,22 @@
 <%- include("../header", {title: title}); %>
 
-<h1>ACCOUNT PAGE</h1>
+<h1>Bankkonton</h1>
+
+<p>Information of bankkonton för kund med id nummer: <%= customer %>.</p>
+
+<pre><%#= JSON.stringify(res, null, 4) %></pre>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Saldo</th>
+    </tr>
+<% for (const row of res) { %>
+    <tr>
+        <td><%= row.idBankkonto %></td>
+        <td><%= row.saldo %></td>
+    </tr>
+<% }; %>
+</table>
 
 <%- include("../footer"); %>
