@@ -15,8 +15,6 @@ body {
 
 /* link hover color */
 li a:hover:not(.active) {
-    background-color: lightgrey;
-    border-radius: 7px;
 }
 
 /* Header/Blog Title */
@@ -24,6 +22,7 @@ li a:hover:not(.active) {
     padding: 30px;
     text-align: center;
     background: white;
+    box-shadow: 2px 2px 1px 2px lightgrey;
 }
 
 /* header h1 style */
@@ -35,6 +34,7 @@ li a:hover:not(.active) {
 .topnav {
     overflow: hidden;
     background-color: #333;
+    box-shadow: 2px 2px 1px 2px lightgrey;
 }
 
 /* Style the topnav links */
@@ -69,7 +69,6 @@ li a:hover:not(.active) {
 .rightcolumn {
     float: left;
     width: 30%;
-    background-color: #f1f1f1;
     padding-left: 20px;
 }
 
@@ -90,6 +89,19 @@ li a:hover:not(.active) {
     background-color: white;
     padding: 20px;
     margin-top: 20px;
+    box-shadow: 2px 2px 1px 2px lightgrey;
+}
+
+.card a:link {
+    color: black;
+}
+
+.card a:visited {
+    color: black;
+}
+
+.card a:hover {
+    color: grey;
 }
 
 /* Add a card effect for articles */
@@ -112,6 +124,7 @@ li a:hover:not(.active) {
     text-align: center;
     background: white;
     margin-top: 20px;
+    box-shadow: 2px 2px 1px 2px lightgrey;
 }
 
 /* Input style */
@@ -151,4 +164,34 @@ input[type=submit] {
 /* Submit */
 input[type=submit]:hover {
     background-color: grey;
+}
+
+.link-tab a {
+    text-decoration: none;
+    line-height: 25px;
+}
+
+.user-tab a {
+    text-decoration: none;
+    line-height: 25px;
+}
+
+.link-tab {
+    list-style-type: none;
+}
+
+.user-tab {
+    list-style-type: none;
+}
+
+.link-tab li::before {
+    content: "\f0c1";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+    padding-right: 20px;
+}
+
+.user-tab li::before {
+    content: "\f007";  /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+    padding-right: 20px;
 }
