@@ -17,7 +17,7 @@ let db;
 })();
 
 async function registerKund(fornamn, efternamn, fodd, adress, ort, pinkod) {
-    let sql = `CALL registerKund(?,?,?,?,?,?)`;
+    let sql = `CALL createUser(?,?,?,?,?,?)`;
     let res;
 
     res = await db.query(sql, [fornamn, efternamn, fodd, adress, ort, pinkod]);
