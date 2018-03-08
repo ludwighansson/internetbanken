@@ -1,27 +1,13 @@
 * {
-    font-family: -apple-system, BlinkMacSystemFont, Helvetica, sans-serif;
+    box-sizing: border-box;
 }
 
 body {
     margin: 0px auto;
-    background: #efefef;
-    width: 800px;
-    text-align: center;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    font-family: Arial;
+    padding: 10px;
+    background: #f1f1f1;
+    width: 1200px;
 }
 
 li a:hover:not(.active) {
@@ -29,84 +15,73 @@ li a:hover:not(.active) {
     border-radius: 7px;
 }
 
-.active {
-    background-color: #00ff;
-}
-
-#centrera {
-    margin: 1px 1px 1px -67px;
-}
-
-table {
-    border: 1px solid #ccc;
-    margin: auto;
-}
-
-th {
-    border-bottom: 1px solid #999;
-}
-
-td {
-    padding: 0.3em;
-}
-
-td.right {
+/* Header/Blog Title */
+.header {
+    padding: 30px;
     text-align: center;
+    background: white;
 }
 
-tr:hover {
-    background-color: #eee;
+.header h1 {
+    font-size: 50px;
 }
 
-fieldset {
-    width: 120px;
-    margin: auto;
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
 }
 
-a {
+/* Style the topnav links */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+    float: left;
+    width: 70%;
+}
+
+/* Right column */
+.rightcolumn {
+    float: left;
+    width: 30%;
+    background-color: #f1f1f1;
     padding-left: 20px;
-    right: 20px;
 }
 
-.header-text a:link {
-    color: white;
+/* Add a card effect for articles */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-top: 20px;
 }
 
-.header-text a:visited {
-    color: white;
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.header-text a:hover {
-    color: grey;
-}
-
-#header {
-    background: linear-gradient(#3b3b3b, #232323);
-    clear: left;
+/* Footer */
+.footer {
     padding: 20px;
     text-align: center;
-}
-
-#footer {
-    background-color: lightgrey;
-    clear: left;
-    padding: 10px;
-    text-align: center;
-}
-
-#link-tab {
-    width: 25%;
-    float: right;
-}
-
-#link-tab a {
-    text-align: center;
-}
-
-#container {
-    height: 322px;
-    padding-top: 20px;
-    padding-bottom: 30px;
+    background: white;
+    margin-top: 20px;
 
 }

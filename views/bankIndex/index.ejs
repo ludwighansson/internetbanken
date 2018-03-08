@@ -1,19 +1,50 @@
 <%- include("../header", {title: title}); %>
 
-<h1>Välkommen till Internetbanken</h1>
-
+<%- include("../nav"); %>
 <body>
-    <div id = "container">
-        <ul id = "link-tab">
-            <li><a href="/bank/Something">Something</a></li>
-            <li><a href="/bank/index">Bank välkomstsida</a></li>
-            <li><a href="/bank/login">Logga in</a></li>
-            <li><a href="/bank/register">Registrera dig</a></li>
-            <li><a href="/bank/swish">Swish</a></li>
-            <li><a href="/bank/dashboard">Dashboard</a></li>
-            <li><a href="/bank/accounts">Visa dina konton</a></li>
-        </ul>
-    </div>
-</body>
 
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>BankBluffOBåg AB</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <p>Vi är en bank som erbjuder enkla och smidiga banktjänster för privatpersoner och företag. Spara, betala och låna på det sätt som passar dig! Vi har även ett stort samhällsengagemang där vi bland annat satsar på unga.</p>
+    </div>
+
+    <div class="card">
+      <h2>Börja spara</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <p>Ju tidigare du kommer igång med att spara desto större frihet kan du få i livet. Sätt gärna upp ett mål som inspirerar dig och starta ett månadssparande som kan växa under tid</p>
+      <h2>Spara till en buffert</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <p>Det är bra att ha två månadslöner som buffert för oförutsedda utgifter. Med e-konto är pengarna lättillgängliga. Öppna e-kontot själv i internetbanken och starta ett månadssparande</p>
+      <h2>Spara till din dröm</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <p>Drömresa, båt eller bröllop? Genom att spara pengar regelbundet i fonder kan dina drömmar få liv fortare än du tror.</p>
+    </div>
+  </div>
+
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>Bank navigering</h2>
+      <ul id = "link-tab">
+           <li><a href="/bank/index">Startsida</a></li>
+           <li><a href="/bank/login">Inlogg</a></li>
+           <li><a href="/bank/register">Registrera</a></li>
+           <li><a href="/bank/swish">Swish</a></li>
+           <li><a href="/bank/dashboard">Instrumentpanel</a></li>
+           <li><a href="/bank/accounts">Kontoöversikt</a></li>
+       </ul>
+    </div>
+
+    <div class="card">
+      <h3>Kontakt</h3>
+      <p>Hampus Åkesson</p>
+      <p>Ludwig Hansson</p>
+      <p>Simon Stender</p>
+    </div>
+  </div>
+</div>
+
+</body>
 <%- include("../footer"); %>
