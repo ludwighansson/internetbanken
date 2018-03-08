@@ -23,7 +23,7 @@ router.get("/register", (req, res) => {
 });
 
 router.post("/register", urlencodedParser, async (req, res) => {
-    await bank.register(req.body.fornamn, req.body.efternamn, req.body.fodd,
+    await bank.registerKund(req.body.fornamn, req.body.efternamn, req.body.fodd,
       req.body.adress, req.body.ort, req.body.pinkod);
       res.redirect("/bank/index");
 });

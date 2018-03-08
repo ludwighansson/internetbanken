@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = {
-    register: register
+    registerKund: registerKund
 };
 
 const mysql  = require("promise-mysql");
@@ -16,7 +16,7 @@ let db;
     });
 })();
 
-async function register(fornamn, efternamn, fodd, adress, ort, pinkod) {
+async function registerKund(fornamn, efternamn, fodd, adress, ort, pinkod) {
     let sql = `CALL registerKund(?,?,?,?,?,?)`;
     let res;
 
