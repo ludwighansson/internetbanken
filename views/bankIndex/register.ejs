@@ -1,5 +1,31 @@
 <%- include("../header", {title: title}); %>
 
-<h1>REGISTER PAGE</h1>
+<h1>Registerera kund</h1>
+
+<form class="label-left" method="post">
+    <fieldset>
+        <legend>Registrera kund</legend>
+
+        <label for="fornamn">Förnamn</label>
+        <input id="fornamn" type="text" name="fornamn">
+
+        <label for="efternamn">Efternamn</label>
+        <input id="efternamn" type="text" name="efternamn">
+
+        <label for="fodd">Födelse datum</label>
+        <input id="fodd" type="text" name="fodd">
+
+        <label for="adress">Adress</label>
+        <input id="adress" type="text" name="adress">
+
+        <label for="ort">Ort</label>
+        <input id="ort" type="text" name="ort">
+
+        <label for="pinkod">Pinkod</label>
+        <input id="pinkod" type="number" name="pinkod">
+
+        <input type="submit" name="doit" value="Lägg till">
+    </fieldset>
+</form>
 
 <%- include("../footer"); %>

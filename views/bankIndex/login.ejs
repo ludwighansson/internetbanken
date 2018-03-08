@@ -1,5 +1,19 @@
 <%- include("../header", {title: title}); %>
 
-<h1>LOGIN PAGE</h1>
+<h1>Logga in</h1>
+
+<form class="label-left" method="post">
+    <fieldset>
+        <legend>Logga in</legend>
+
+        <label for="idKund">Kund id</label>
+        <input id="idKund" type="number" name="idKund">
+
+        <label for="pinkod">pinkod</label>
+        <input id="pinkod" type="number" name="pinkod">
+
+        <input type="submit" name="doit" value="Login">
+    </fieldset>
+</form>
 
 <%- include("../footer"); %>
