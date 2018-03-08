@@ -141,6 +141,9 @@ DELIMITER ;
 -- ------------------------- --
 
 DROP PROCEDURE IF EXISTS getAllAccountsOnUserID;
+DROP PROCEDURE IF EXISTS createUser;
+DROP PROCEDURE IF EXISTS shareAccountWithUser;
+DROP PROCEDURE IF EXISTS addAccountToUser;
 
 DELIMITER //
 CREATE PROCEDURE getAllAccountsOnUserID(
@@ -148,14 +151,80 @@ CREATE PROCEDURE getAllAccountsOnUserID(
 )
 BEGIN
 	SELECT 
-	k.idKund,
-    b.idBankkonto,
-    b.saldo
+	*
     FROM bankkonto AS b
 		JOIN kund AS k
 			ON b.Kund_idKund = k.idKund
     WHERE  k.idKund = id
 ;
+END
+//
+
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE createUser(
+  cFornamn VARCHAR(40),
+  cEfternamn VARCHAR(40),
+  cFodd DATE,
+  cAdress VARCHAR(40),
+  cOrt VARCHAR(40),
+  cPinkod INT(4)
+)
+BEGIN
+	INSERT INTO Kund (fornamn, efternamn, fodd, adress, ort, pinkod) 
+    VALUES (cFornamn, cEfternamn, cFodd, cAdress, cOrt, cPinkod);
+    
+    SELECT idKund AS id INTO @kundID
+	FROM Kund 
+	ORDER BY idKund 
+    DESC LIMIT 1;
+    
+    INSERT INTO bankkonto(Kund_idKund)
+    VALUES (@kundID);
+    
+    SELECT idBankkonto AS id INTO @bankID
+	FROM bankkonto 
+	ORDER BY idBankkonto 
+    DESC LIMIT 1;
+    
+    INSERT INTO accountManager(accountID, customerID)
+	VALUES (@kundID, @bankID);
+
+    
+END
+//
+
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE shareAccountWithUser(
+  userID INT(11),
+  accID INT(11)
+)
+BEGIN
+    INSERT INTO accountManager(accountID, customerID)
+	VALUES (userID, accID);   
+END
+//
+
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE addAccountToUser(
+  userID INT(11)
+)
+BEGIN
+	 INSERT INTO bankkonto(Kund_idKund)
+    VALUES (userID);
+    
+    SELECT idBankkonto AS id INTO @bankID
+	FROM bankkonto 
+	ORDER BY idBankkonto 
+    DESC LIMIT 1;
+
+    INSERT INTO accountManager(accountID, customerID)
+	VALUES (@bankID, userID);   
 END
 //
 
