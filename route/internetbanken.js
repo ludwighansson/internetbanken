@@ -43,19 +43,19 @@ router.post("/register/complete", urlencodedParser, async (req, res) => {
 
 router.get("/login", (req, res) => {
     let data = {
-        title: "Login to Internetbanken"
-        //user: req.session.kundID || null
+        title: "Login to Internetbanken",
+        user: req.session.kundID || null
     };
 
     res.render("bankIndex/login", data);
 });
 
 router.post("/login", urlencodedParser, async (req, res) => {
-    let result = await user.login(req.body.idKund, req.body.pinkod);
+    let result = await user.login(req.body.kundID, req.body.pinkod);
 
-    if (result && result[0].idKund) {
+    if (result && result[0].kundID) {
         console.info(`Inloggning lyckades, användare ${result[0].idKund} är inloggad.`);
-        req.session.idKund = result[0].idKund;
+        req.session.kundID = result[0].kundID;
     }
     console.log(result);
     res.redirect("/bank/index");

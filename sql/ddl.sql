@@ -238,7 +238,7 @@ CREATE PROCEDURE loginUser(
 )
 BEGIN
     SELECT
-    idKund
+    idKund AS kundID
     FROM kund
     WHERE
     idKund = cidKund
