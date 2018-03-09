@@ -18,7 +18,7 @@ app.use(session({
 
 app.use(middleware.logIncomingToConsole);
 app.use(express.static(path.join(__dirname, "public")));
-app.use(/^\/(?!user\/login).*/, middleware.authenticatedOrLogin);
+app.use(/^\/(?!bank\/login).*/, middleware.authenticatedOrLogin);
 app.use("/bank", routeIndex);
 app.listen(port, logStartUpDetailsToConsole);
 

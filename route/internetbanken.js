@@ -9,7 +9,8 @@ const user             = require("../src/user.js");
 
 router.get("/index", (req, res) => {
     let data = {
-        title: "Welcome to the internetbank"
+        title: "Welcome to the internetbank",
+        user: req.session.kundID || null
     };
 
     res.render("bankIndex/index", data);
@@ -51,7 +52,7 @@ router.get("/login", (req, res) => {
 });
 
 router.post("/login", urlencodedParser, async (req, res) => {
-    let result = await user.login(req.body.idKund, req.body.pinkod);
+    let result = await user.login(req.body.kundID, req.body.pinkod);
 
     if (result && result[0] && result[0].kundID) {
         console.info(`Inloggning lyckades, användare ${result[0].idKund} är inloggad.`);
