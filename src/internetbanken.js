@@ -22,7 +22,7 @@ async function registerKund(fornamn, efternamn, fodd, adress, ort, pinkod) {
     let res;
 
     res = await db.query(sql, [fornamn, efternamn, fodd, adress, ort, pinkod]);
-    return res;
+    return res[0];
 }
 
 async function showCustomer(id) {
