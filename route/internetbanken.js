@@ -1,10 +1,11 @@
 "use strict";
 
-const express    = require("express");
-const router     = express.Router();
-const bank    = require("../src/internetbanken.js");
-const bodyParser = require("body-parser");
+const express          = require("express");
+const router           = express.Router();
+const bank             = require("../src/internetbanken.js");
+const bodyParser       = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false});
+const user             = require("../src/user.js");
 
 router.get("/index", (req, res) => {
     let data = {
@@ -42,10 +43,21 @@ router.post("/register/complete", urlencodedParser, async (req, res) => {
 
 router.get("/login", (req, res) => {
     let data = {
-        title: "Login to Internetbanken"
+        title: "Login to Internetbanken",
+        user: req.session.kundID || null
     };
 
     res.render("bankIndex/login", data);
+});
+
+router.post("/login", urlencodedParser, async (req, res) => {
+    let result = await user.login(req.body.idKund, req.body.pinkod);
+
+    if (result && result[0].kundID) {
+        console.info(`Inloggning lyckades, användare ${result[0].kundID} är inloggad.`);
+        req.session.kundID = result[0].kundID;
+    }
+    res.redirect("/bankIndex/index");
 });
 
 router.get("/dashboard", (req, res) => {

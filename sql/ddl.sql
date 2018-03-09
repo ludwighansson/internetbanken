@@ -115,19 +115,19 @@ START TRANSACTION;
 
 UPDATE bankkonto
 	SET saldo = saldo + transaktionsPeng
-WHERE 
+WHERE
 	idBankkonto = tillIdBankkonto;
-    
+
 UPDATE bankkonto
-	SET saldo = (saldo - transaktionsPeng) - transaktionsPeng * 0.02 
+	SET saldo = (saldo - transaktionsPeng) - transaktionsPeng * 0.02
 WHERE
 	idBankkonto = franIdBankkonto;
-    
+
 UPDATE bankkonto
 	SET saldo = saldo + transaktionsPeng * 0.02
 WHERE
 	Kund_idKund = "1337";
-    
+
 COMMIT;
 
 END
@@ -150,7 +150,7 @@ CREATE PROCEDURE getAllAccountsOnUserID(
 	id INT(11)
 )
 BEGIN
-	SELECT 
+	SELECT
 	*
     FROM bankkonto AS b
 		JOIN kund AS k
@@ -172,26 +172,26 @@ CREATE PROCEDURE createUser(
   cPinkod INT(4)
 )
 BEGIN
-	INSERT INTO Kund (fornamn, efternamn, fodd, adress, ort, pinkod) 
+	INSERT INTO Kund (fornamn, efternamn, fodd, adress, ort, pinkod)
     VALUES (cFornamn, cEfternamn, cFodd, cAdress, cOrt, cPinkod);
-    
+
     SELECT idKund AS id INTO @kundID
-	FROM Kund 
-	ORDER BY idKund 
+	FROM Kund
+	ORDER BY idKund
     DESC LIMIT 1;
-    
+
     INSERT INTO bankkonto(Kund_idKund)
     VALUES (@kundID);
-    
+
     SELECT idBankkonto AS id INTO @bankID
-	FROM bankkonto 
-	ORDER BY idBankkonto 
+	FROM bankkonto
+	ORDER BY idBankkonto
     DESC LIMIT 1;
-    
+
     INSERT INTO accountManager(accountID, customerID)
 	VALUES (@kundID, @bankID);
 
-    
+
 END
 //
 
@@ -204,7 +204,7 @@ CREATE PROCEDURE shareAccountWithUser(
 )
 BEGIN
     INSERT INTO accountManager(accountID, customerID)
-	VALUES (userID, accID);   
+	VALUES (userID, accID);
 END
 //
 
@@ -217,29 +217,33 @@ CREATE PROCEDURE addAccountToUser(
 BEGIN
 	 INSERT INTO bankkonto(Kund_idKund)
     VALUES (userID);
-    
+
     SELECT idBankkonto AS id INTO @bankID
-	FROM bankkonto 
-	ORDER BY idBankkonto 
+	FROM bankkonto
+	ORDER BY idBankkonto
     DESC LIMIT 1;
 
     INSERT INTO accountManager(accountID, customerID)
-	VALUES (@bankID, userID);   
+	VALUES (@bankID, userID);
 END
 //
 
 DELIMITER ;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+DROP PROCEDURE IF EXISTS loginUser;
+DELIMITER ;;
+CREATE PROCEDURE loginUser(
+    cidKund INT(11),
+    cpinkod INT(4)
+)
+BEGIN
+    SELECT
+    idKund AS kundID
+    FROM kund
+    WHERE
+    idKund = cidKund
+      AND pinkod = cPinkod
+    ;
+END
+;;
+DELIMITER ;
