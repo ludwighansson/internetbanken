@@ -1,22 +1,29 @@
 <%- include("../header", {title: title}); %>
+<%- include("../nav"); %>
 
-<h1>Bankkonton</h1>
+<div class="row">
+  <div class="centercolumn">
+    <div class="card">
+      <h1>Bankkonton</h1>
 
-<p>Information of bankkonton för kund med id nummer: <%= customer %>.</p>
+      <p>Information för bankkont av kund med id nummer: <%= customer %>.</p>
 
-<pre><%#= JSON.stringify(res, null, 4) %></pre>
+      <pre><%#= JSON.stringify(res, null, 4) %></pre>
 
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Saldo</th>
-    </tr>
-<% for (const row of res) { %>
-    <tr>
-        <td><%= row.idBankkonto %></td>
-        <td><%= row.saldo %></td>
-    </tr>
-<% }; %>
-</table>
+      <table>
+          <tr>
+              <th>Id</th>
+              <th>Saldo</th>
+          </tr>
+      <% for (const row of res) { %>
+          <tr>
+              <td><%= row.idBankkonto %></td>
+              <td><%= row.saldo %></td>
+          </tr>
+      <% }; %>
+      </table>
 
+    </div>
+  </div>
+</div>
 <%- include("../footer"); %>
