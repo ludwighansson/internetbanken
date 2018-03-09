@@ -18,7 +18,8 @@ router.get("/index", (req, res) => {
 
 router.get("/register", (req, res) => {
     let data = {
-        title: "Register To Internetbanken"
+        title: "Register To Internetbanken",
+        user: req.session.kundID || null
     };
 
     res.render("bankIndex/register", data);
