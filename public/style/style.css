@@ -81,8 +81,8 @@ li a:hover:not(.active) {
 }
 
 /* Input form */
-.forminput {
-
+.navLeft {
+  color: green;
 }
 /* Add a card effect for articles */
 .card {
