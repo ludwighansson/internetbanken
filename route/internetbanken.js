@@ -28,6 +28,10 @@ router.post("/register", urlencodedParser, async (req, res) => {
       res.redirect("/bank/index");
 });
 
+router.post("/register/complete", urlencodedParser, async (req, res) => {
+      res.redirect("/bank/login");
+});
+
 router.get("/login", (req, res) => {
     let data = {
         title: "Login to Internetbanken"
