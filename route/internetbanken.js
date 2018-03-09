@@ -47,13 +47,13 @@ router.get("/login", (req, res) => {
         user: req.session.kundID || null
     };
 
-    res.render("bankIndex/login", data);
+    res.render("user/login", data);
 });
 
 router.post("/login", urlencodedParser, async (req, res) => {
-    let result = await user.login(req.body.kundID, req.body.pinkod);
+    let result = await user.login(req.body.idKund, req.body.pinkod);
 
-    if (result && result[0].kundID) {
+    if (result && result[0] && result[0].kundID) {
         console.info(`Inloggning lyckades, användare ${result[0].idKund} är inloggad.`);
         req.session.kundID = result[0].kundID;
     }

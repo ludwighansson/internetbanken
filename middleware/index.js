@@ -11,20 +11,20 @@ module.exports = {
 
 
 /**
- * Check that user is authenticated or redirect to login.
+ * Check that kund is authenticated or redirect to login.
  *
  * @return {void}
  */
 function authenticatedOrLogin(req, res, next) {
     //console.info("Authentication check through session.");
 
-    if (req.session && req.session.acronym) {
+    if (req.session && req.session.kundID) {
         return next();
     }
 
     console.info("User is not authenticated.");
-    console.info("Redirecting to /user/login.");
-    res.redirect("/user/login");
+    console.info("Redirecting to /bank/login.");
+    res.redirect("/bank/login");
 }
 
 

@@ -1,4 +1,4 @@
-<%- include("../header", {title: title}); %>
+<%- include("../header", {title: title, user: user}); %>
 <%- include("../nav"); %>
 <div class="row">
   <div class="centercolumn">
@@ -8,7 +8,7 @@
               <h1>Logga in</h1>
               <legend></legend>
 
-              <input id="idKund" type="text" name="idKund" placeholder="Idkund..">
+              <input id="kundID" type="text" name="kundID" placeholder="Idkund..">
               <br>
               <input id="pinkod" type="password" name="pinkod" placeholder="Pinkod..">
               <br>
