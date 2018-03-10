@@ -1,11 +1,10 @@
-<%- include("../header", {title: title}); %>
-
+<%- include("../header", {title: title, user: user}); %>
+<%- include("../nav"); %>
 
 <div class="row">
   <div class="centercolumn">
     <div class="card">
-      <h1>Kund lista</h1>
-      <table>
+      <table id="customers">
           <tr>
               <th>Id</th>
               <th>Förnamn</th>

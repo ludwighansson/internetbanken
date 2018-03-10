@@ -18,7 +18,7 @@ router.get("/index", (req, res) => {
 
 router.get("/customerList", async (req, res) => {
     let data = {
-        title: "Våra kunder"
+        title: "Våra kunder",
         user: req.session.kundID || null
     };
 
@@ -44,7 +44,8 @@ router.post("/register", urlencodedParser, async (req, res) => {
 
 router.get("/register/complete", (req, res) => {
     let data = {
-        title: "Register Complete"
+        title: "Register Complete",
+        user: req.session.kundID || null
     };
 
     res.render("bankIndex/register-complete", data);
@@ -94,7 +95,8 @@ router.post("/logout", (req, res) => {
 
 router.get("/dashboard", (req, res) => {
     let data = {
-        title: "Dashboard"
+        title: "Dashboard",
+        user: req.session.kundID || null
     };
 
     res.render("bankIndex/dashboard", data);
@@ -104,6 +106,7 @@ router.get("/accounts/:id", async (req, res) => {
     let id = req.params.id;
     let data = {
         title: "Viewing accounts for user ID",
+        user: req.session.kundID || null,
         customer: id
         };
 
@@ -114,7 +117,8 @@ router.get("/accounts/:id", async (req, res) => {
 
 router.get("/swish", (req, res) => {
     let data = {
-        title: "Swish App"
+        title: "Swish App",
+        user: req.session.kundID || null
     };
 
     res.render("bankIndex/swishapp", data);

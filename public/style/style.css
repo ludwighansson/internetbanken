@@ -138,6 +138,18 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
+/* Input style */
+input[type=password], select {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
 input[type=date], select {
     width: 50%;
     padding: 12px 20px;
@@ -205,4 +217,27 @@ input[type=submit]:hover {
     content: "\f007";  /* this is your text. You can also use UTF-8 character codes as I do here */
     font-family: FontAwesome;
     padding-right: 20px;
+}
+
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #333;
+    color: white;
 }
