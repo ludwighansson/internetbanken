@@ -52,16 +52,34 @@ router.get("/login", (req, res) => {
     res.render("user/login", data);
 });
 
+
 router.post("/login", urlencodedParser, async (req, res) => {
     let result = await user.login(req.body.kundID, req.body.pinkod);
 
     if (result && result[0] && result[0].kundID) {
-        console.info(`Inloggning lyckades, användare ${result[0].idKund} är inloggad.`);
+        console.info(`Inloggning lyckades, användare ${result[0].kundID} är inloggad.`);
         req.session.kundID = result[0].kundID;
     }
     console.log(result);
     res.redirect("/bank/index");
 });
+
+router.get("/logout", (req, res) => {
+    let data = {
+        title: "Logga ut från Internetbanken",
+        user: req.session.kundID || null
+    };
+
+    res.render("user/logout", data);
+});
+
+router.post("/logout", (req, res) => {
+    console.info(`Logging out user '${req.session.kundID}'.`);
+    delete req.session.kundID;
+
+    res.redirect("/bank/login");
+});
+
 
 router.get("/dashboard", (req, res) => {
     let data = {
