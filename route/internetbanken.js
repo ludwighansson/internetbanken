@@ -16,6 +16,16 @@ router.get("/index", (req, res) => {
     res.render("bankIndex/index", data);
 });
 
+router.get("/customerList", async (req, res) => {
+    let data = {
+        title: "Våra kunder"
+    };
+
+    data.res = await bank.customerList();
+
+    res.render("bankIndex/customerList", data);
+})
+
 router.get("/register", (req, res) => {
     let data = {
         title: "Register To Internetbanken",

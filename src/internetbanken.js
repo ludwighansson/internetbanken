@@ -2,7 +2,8 @@
 
 module.exports = {
     registerKund: registerKund,
-    showCustomer: showCustomer
+    showCustomer: showCustomer,
+    customerList: customerList
 };
 
 const mysql  = require("promise-mysql");
@@ -32,4 +33,12 @@ async function showCustomer(id) {
     res = await db.query(sql, [id]);
 
     return res[0];
+}
+
+async function customerList() {
+    let sql = `SELECT * FROM kund;`;
+    let res;
+
+    res = await db.query(sql);
+    return res;
 }

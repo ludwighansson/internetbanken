@@ -1,0 +1,34 @@
+<%- include("../header", {title: title}); %>
+
+<h1>Kund lista</h1>
+
+<pre><%#= JSON.stringify(res, null, 4) %></pre>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Förnamn</th>
+        <th>Efternamn</th>
+        <th>Födelsedatum</th>
+        <th>Adress</th>
+        <th>Ort</th>
+    </tr>
+<% for (const row of res) { %>
+    <tr>
+
+        <td><%= row.idKund %></td>
+        <td><%= row.fornamn %></td>
+        <td><%= row.efternamn %></td>
+        <td><%= row.fodd %></td>
+        <td><%= row.adress %></td>
+        <td><%= row.ort %></td>
+
+    </tr>
+<% }; %>
+</table>
+
+<p>
+    <a href="index">Välkomstsida</a>
+</p>
+
+<%- include("../footer"); %>
