@@ -19,6 +19,7 @@ router.get("/index", (req, res) => {
 router.get("/customerList", async (req, res) => {
     let data = {
         title: "Våra kunder"
+        user: req.session.kundID || null
     };
 
     data.res = await bank.customerList();
