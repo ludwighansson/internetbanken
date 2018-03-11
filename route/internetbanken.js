@@ -17,9 +17,13 @@ router.get("/index", (req, res) => {
 });
 
 router.get("/management", async (req, res) => {
+    let sum = await bank.getTotalBankValue();
+    let saValue = await bank.getSecretAccountValue();
     let data = {
         title: "Welcome to the internetbank",
-        user: req.session.kundID || null
+        user: req.session.kundID || null,
+        totalValue: sum[0],
+        saValue : saValue[0]
     };
 
     data.res = await bank.printLogg();

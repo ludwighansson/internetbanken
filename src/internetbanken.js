@@ -5,7 +5,9 @@ module.exports = {
     showCustomer: showCustomer,
     customerList: customerList,
     transferMoney: transferMoney,
-    printLogg: printLogg
+    printLogg: printLogg,
+    getTotalBankValue : getTotalBankValue,
+    getSecretAccountValue: getSecretAccountValue
 };
 
 const mysql  = require("promise-mysql");
@@ -85,7 +87,23 @@ async function transferMoney(ownId, idBankkonto, amount) {
 
 async function printLogg() {
     let sql = `SELECT * FROM logg
-               ORDER BY tid DESC;`;
+               ORDER BY loggID DESC;`;
+    let res;
+
+    res = await db.query(sql);
+    return res;
+}
+
+async function getTotalBankValue() {
+    let sql = `SELECT SUM(saldo) AS sum FROM bankkonto;`;
+    let res;
+
+    res = await db.query(sql);
+    return res;
+}
+
+async function getSecretAccountValue() {
+    let sql = `SELECT saldo FROM bankkonto WHERE idBankkonto = 1;`;
     let res;
 
     res = await db.query(sql);

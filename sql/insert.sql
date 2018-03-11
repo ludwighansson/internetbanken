@@ -2,6 +2,7 @@ DELETE  FROM bankkonto;
 DELETE FROM kund;
 
 
+CALL createUser("admin", "root", "1970-01-01", "secretstreet", "space", -1);
 CALL createUser("Simon", "Stender", "1995-02-18", "Kungsmarksvägen 17", "Karlskrona", 1111);
 CALL createUser("Hampus", "Åkesson", "1998-10-03", "Gamla infartsvägen 3B", "Karlskrona", 1112);
 CALL createUser("Ludwig",  "Hansson", "1998-08-10", "Stadsvägen 10", "Karlskrona", 1113);
@@ -16,25 +17,25 @@ CALL createUser("Erik", "Pettersson", "1978-12-24", "Svanvägen 1", "Landskrona"
 CALL createUser("Hanna", "Åkesson", "1998-10-03", "Ekelidsgatan 12", "Hörby", 1000);
 
 
-CALL addAccountToUser(1);
 CALL addAccountToUser(2);
 CALL addAccountToUser(3);
+CALL addAccountToUser(4);
 
-CALL depositMoney(1, 1000);
-CALL depositMoney(2, 2500);
-CALL depositMoney(3, 3200);
-CALL depositMoney(4, 932);
-CALL depositMoney(5, 1230);
-CALL depositMoney(6, 4230);
-CALL depositMoney(7, 5390);
-CALL depositMoney(8, 1590);
-CALL depositMoney(9, 2530);
-CALL depositMoney(10, 6539);
-CALL depositMoney(11, 65);
-CALL depositMoney(12, 653);
-CALL depositMoney(13, 639);
-CALL depositMoney(14, 339);
-CALL depositMoney(15, 29);
+CALL depositMoney(2, 1000);
+CALL depositMoney(3, 2500);
+CALL depositMoney(4, 3200);
+CALL depositMoney(5, 932);
+CALL depositMoney(6, 1230);
+CALL depositMoney(7, 4230);
+CALL depositMoney(8, 5390);
+CALL depositMoney(9, 1590);
+CALL depositMoney(10, 2530);
+CALL depositMoney(11, 6539);
+CALL depositMoney(12, 65);
+CALL depositMoney(13, 653);
+CALL depositMoney(14, 639);
+CALL depositMoney(15, 339);
+CALL depositMoney(16, 29);
 
 
 CALL shareAccountWithUser(10,1);

@@ -65,3 +65,12 @@ call getAllAccountsOnUserID(1);
 
 SELECT * FROM logg
 ORDER BY tid DESC;
+
+
+    
+    
+    
+    
+    
+    
+    

@@ -302,3 +302,33 @@ BEGIN
 END
 ;;
 DELIMITER ;
+
+DROP PROCEDURE IF EXISTS getAdministationInfo;
+DELIMITER ;;
+CREATE PROCEDURE getAdministationInfo(
+)
+BEGIN
+	SELECT 
+	*
+    FROM logg 
+	ORDER BY loggID DESC;
+END
+;;
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
