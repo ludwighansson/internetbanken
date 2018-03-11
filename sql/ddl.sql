@@ -261,10 +261,44 @@ CREATE PROCEDURE depositMoney(
     dAmount INT(11)
 )
 BEGIN
+
+	START TRANSACTION;
+    
+    UPDATE Bankkonto
+    SET saldo = dAmount
+    WHERE IdBankkonto = dIdBankkonto
+    ;
+    
+    COMMIT;
+END
+;;
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS transferMoney;
+DELIMITER ;;
+CREATE PROCEDURE transferMoney(
+    dOwnBankkonto INT(11),
+	dIdBankkonto INT(11),
+    dAmount INT(11)
+   
+)
+BEGIN
+
+	START TRANSACTION;
+    
     UPDATE Bankkonto
     SET saldo = saldo + dAmount
-    WHERE dIdBankkonto = IdBankkonto
+    WHERE IdBankkonto = dIdBankkonto
     ;
+    
+    UPDATE Bankkonto
+    SET saldo = saldo - dAmount
+    WHERE idBankkonto = dOwnBankkonto
+    ;
+    
+    COMMIT;
 END
 ;;
 DELIMITER ;

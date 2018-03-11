@@ -136,7 +136,7 @@ router.get("/transfer-money/:id", async (req, res) => {
 });
 
 router.post("/transfer-money/:id", urlencodedParser, async (req, res) => {
-    await bank.depositMoney(req.body.idBankkonto, req.body.amount);
+    await bank.transferMoney(req.body.ownId, req.body.idBankkonto, req.body.amount);
 
     res.redirect("/bank/accounts");
 });

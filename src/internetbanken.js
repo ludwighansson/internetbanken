@@ -4,7 +4,7 @@ module.exports = {
     registerKund: registerKund,
     showCustomer: showCustomer,
     customerList: customerList,
-    depositMoney: depositMoney
+    transferMoney: transferMoney
 };
 
 const mysql  = require("promise-mysql");
@@ -44,10 +44,10 @@ async function customerList() {
     return res;
 }
 
-async function depositMoney(idBankkonto, amount) {
-    let sql = `CALL depositMoney(?,?);`;
+async function transferMoney(ownId, idBankkonto, amount) {
+    let sql = `CALL transferMoney(?,?,?);`;
     let res;
 
-    res = await db.query(sql, [idBankkonto, amount]);
+    res = await db.query(sql, [ownId, idBankkonto, amount]);
     return res;
 }
