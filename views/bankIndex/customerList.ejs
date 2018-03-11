@@ -15,13 +15,14 @@
           </tr>
       <% for (const row of res) { %>
           <tr>
-
+              <% if (row.idKund != 1) { %>
               <td><%= row.idKund %></td>
               <td><%= row.fornamn %></td>
               <td><%= row.efternamn %></td>
               <td><%= row.fodd %></td>
               <td><%= row.adress %></td>
               <td><%= row.ort %></td>
+              <% } %>
           </tr>
       <% }; %>
 

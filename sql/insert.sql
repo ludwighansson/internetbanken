@@ -39,15 +39,15 @@ CALL depositMoney(15, 339);
 CALL depositMoney(16, 29);
 
 
-CALL shareAccountWithUser(10,1);
-CALL shareAccountWithUser(9,1);
-CALL shareAccountWithUser(8,1);
-CALL shareAccountWithUser(12,2);
-CALL shareAccountWithUser(3,2);
-CALL shareAccountWithUser(4,2);
-CALL shareAccountWithUser(5,6);
-CALL shareAccountWithUser(7,6);
-CALL shareAccountWithUser(3,6);
+CALL shareAccountWithUser(10,2);
+CALL shareAccountWithUser(9, 3);
+CALL shareAccountWithUser(8, 2);
+CALL shareAccountWithUser(12, 3);
+CALL shareAccountWithUser(3, 3);
+CALL shareAccountWithUser(4, 3);
+CALL shareAccountWithUser(5, 7);
+CALL shareAccountWithUser(7, 7);
+CALL shareAccountWithUser(3, 7);
 
 
 
