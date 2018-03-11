@@ -65,3 +65,5 @@ call getAllAccountsOnUserID(1);
 
 SELECT * FROM logg
 ORDER BY tid DESC;
+
+SELECT SUM(saldo) from bankkonto;
