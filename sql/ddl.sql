@@ -262,7 +262,7 @@ CREATE PROCEDURE depositMoney(
 )
 BEGIN
     UPDATE Bankkonto
-    SET saldo = dAmount
+    SET saldo = saldo + dAmount
     WHERE dIdBankkonto = IdBankkonto
     ;
 END

@@ -121,7 +121,7 @@ router.get("/accounts", async (req, res) => {
 });
 
 router.get("/transfer-money/:id", async (req, res) => {
-    let id = req.params.id
+    let id = req.params.id;
     let userID = req.session.kundID;
     let data = {
         title: "Viewing accounts for user ID",
@@ -135,7 +135,8 @@ router.get("/transfer-money/:id", async (req, res) => {
     res.render("bankIndex/transfer-money", data);
 });
 
-router.post("/transfer-money/:id", (req, res) => {
+router.post("/transfer-money/:id", urlencodedParser, async (req, res) => {
+    await bank.depositMoney(req.body.idBankkonto, req.body.amount);
 
     res.redirect("/bank/accounts");
 });

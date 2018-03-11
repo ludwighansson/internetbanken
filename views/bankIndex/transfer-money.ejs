@@ -1,32 +1,21 @@
 <%- include("../header", {title: title, user: user}); %>
 <%- include("../nav"); %>
-
 <div class="row">
   <div class="centercolumn">
-    <div class="card">
-      <h1>Överför pengar från konto: <%= id %></h1>
+    <div class="card2">
+       <form class="frominput" method="post">
+          <fieldset class="fieldsetinput">
+              <<h1>Överför pengar från konto: <%= accID %></h1>
 
-      <h4>Välj belopp att flytta och sedan till vilket konto.</h4>
-
-      <pre><%#= JSON.stringify(res, null, 4) %></pre>
-
-      <table id="customers">
-          <tr>
-              <th>Kontonummer</th>
-              <th>Saldo</th>
-              <th>Innehavare</th>
-              <th>Alternativ</th>
-          </tr>
-      <% for (const row of res) { %>
-              <tr>
-                  <td><%= row.idBankkonto %></td>
-                  <td><%= row.saldo %></td>
-                  <td><%= row.holder %></td>
-                  <td></a><a class="fa fa-credit-card"><a class="fa fa-edit"><a class="fa fa-trash-o"></a></td>
-              </tr>
-      <% }; %>
-      </table>
-
+              <h4>Välj vilket konto du ska skicka till sedan belopp.</h4>
+              <legend></legend>
+              <input id="idBankkonto" type="number" name="idBankkonto" placeholder="Id..">
+              <br>
+              <input id="amount" type="number" name="amount" placeholder="Summa..">
+              <br>
+              <input type="submit" name="doit" value="Överför">
+          </fieldset>
+       </form>
     </div>
   </div>
 </div>
