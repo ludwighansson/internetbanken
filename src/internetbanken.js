@@ -84,7 +84,6 @@ async function transferMoney(ownId, idBankkonto, amount) {
     return res;
 }
 
-
 async function printLogg() {
     let sql = `SELECT * FROM logg
                ORDER BY loggID DESC;`;

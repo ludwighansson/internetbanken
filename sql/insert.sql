@@ -15,6 +15,7 @@ CALL createUser("Kevin", "Carlsson", "1998-12-24", "Svensväg 10", "Stockholm", 
 CALL createUser("Paula", "Svensson", "1988-12-24", "Marieberg 10", "Hörby", 1110);
 CALL createUser("Erik", "Pettersson", "1978-12-24", "Svanvägen 1", "Landskrona", 1100);
 CALL createUser("Hanna", "Åkesson", "1998-10-03", "Ekelidsgatan 12", "Hörby", 1000);
+CALL createUser("Secret", "Account", "2018-03-11", "Campus BTH", "Karlskrona", 1111);
 
 
 CALL addAccountToUser(2);
