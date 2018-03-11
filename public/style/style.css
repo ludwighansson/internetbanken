@@ -241,3 +241,7 @@ input[type=submit]:hover {
     background-color: #333;
     color: white;
 }
+
+td a {
+    padding-right: 20px;
+}

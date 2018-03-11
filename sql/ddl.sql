@@ -39,7 +39,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS bankkonto;
 CREATE TABLE IF NOT EXISTS `internetbanken`.`bankkonto` (
   `idBankkonto` INT NOT NULL AUTO_INCREMENT,
-  `saldo` INT NULL,
+  `saldo` INT NOT NULL DEFAULT 0,
   `Kund_idKund` INT NOT NULL,
   PRIMARY KEY (`idBankkonto`),
   INDEX `fk_Bankkonto_Kund_idx` (`Kund_idKund` ASC),
@@ -63,12 +63,13 @@ CREATE TABLE IF NOT EXISTS accountManager (
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS logg;
 CREATE TABLE IF NOT EXISTS `internetbanken`.`logg` (
+	loggID INT(11) NOT NULL AUTO_INCREMENT,
   `action` VARCHAR(15) NOT NULL,
   `kontoNummer` INT NOT NULL,
   `saldo` INT NULL,
   `saldoTransaktion` INT NULL,
   `tid` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`kontoNummer`))
+  PRIMARY KEY (loggID))
 ENGINE = InnoDB;
 
 
@@ -151,12 +152,16 @@ CREATE PROCEDURE getAllAccountsOnUserID(
 )
 BEGIN
 	SELECT
-	*
-    FROM bankkonto AS b
-		JOIN kund AS k
-			ON b.Kund_idKund = k.idKund
-    WHERE  k.idKund = id
-;
+		b.idBankkonto,
+		b.saldo,
+		CONCAT(k.fornamn, ' ', k.efternamn, ' (Kund ID: ', k.idKund, ')') AS holder
+		FROM bankkonto AS b
+			JOIN accountManager AS am
+				ON am.accountID = b.idBankkonto
+			JOIN Kund AS k
+				ON k.idKund = b.Kund_idKund
+		WHERE  am.customerID = id
+	;
 END
 //
 
@@ -243,6 +248,22 @@ BEGIN
     WHERE
     idKund = cidKund
       AND pinkod = cPinkod
+    ;
+END
+;;
+DELIMITER ;
+
+
+DROP PROCEDURE IF EXISTS depositMoney;
+DELIMITER ;;
+CREATE PROCEDURE depositMoney(
+    dIdBankkonto INT(11),
+    dAmount INT(11)
+)
+BEGIN
+    UPDATE Bankkonto
+    SET saldo = dAmount
+    WHERE dIdBankkonto = IdBankkonto
     ;
 END
 ;;

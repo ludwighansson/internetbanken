@@ -11,15 +11,17 @@ CALL createUser("Adam", "Borg", "1994-03-20", "Stjärtvägen 20", "Göteborg", 8
 CALL createUser("Stefan", "Holm", "1984-01-20", "Hoppvägen 10", "Svanholm", 9753);
 CALL createUser("Kevin", "Kevsson", "2005-12-24", "Olyckansväg 10", "Gävle", 1234);
 
+CALL depositMoney(1, 1000);
+CALL depositMoney(2, 2500);
+CALL depositMoney(3, 3200);
+CALL depositMoney(4, 932);
+CALL depositMoney(5, 1230);
+CALL depositMoney(6, 4230);
+
 
 select * from kund;
-select * from accountManager;
+select * from accountManager WHERE customerID = 2;
 
-
-INSERT INTO accountManager VALUES (1, 1);
-INSERT INTO accountManager VALUES (1, 2);
-INSERT INTO accountManager VALUES (1, 3);
-INSERT INTO accountManager VALUES (1, 4);
 select * from accountManager;
 
 SELECT * 
@@ -49,10 +51,20 @@ CALL getAllAccountsOnUserID(2);
     
 
 CALL addAccountToUser(2);
-CALL shareAccountWithUser(2, 1);
+CALL shareAccountWithUser(1, 2);
 
     
-    
+SELECT
+b.idBankkonto,
+b.saldo,
+CONCAT(k.fornamn, ' ', k.efternamn, ' (Kund ID: ', k.idKund, ')')
+FROM bankkonto AS b
+	JOIN accountManager AS am
+		ON am.accountID = b.idBankkonto
+	JOIN Kund AS k
+		ON k.idKund = b.Kund_idKund
+WHERE  am.customerID = 2;
+;
     
     
     

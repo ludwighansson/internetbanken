@@ -93,22 +93,28 @@ router.post("/logout", (req, res) => {
 });
 
 
-router.get("/dashboard", (req, res) => {
-    let data = {
-        title: "Dashboard",
-        user: req.session.kundID || null
-    };
-
-    res.render("bankIndex/dashboard", data);
-});
-
-router.get("/accounts/:id", async (req, res) => {
-    let id = req.params.id;
+router.get("/dashboard", async (req, res) => {
+    let id = req.session.kundID;
+    console.log(id);
     let data = {
         title: "Viewing accounts for user ID",
         user: req.session.kundID || null,
         customer: id
-        };
+    };
+
+    data.res = await bank.showCustomer(id);
+
+    res.render("bankIndex/dashboard", data);
+});
+
+router.get("/accounts", async (req, res) => {
+    let id = req.session.kundID;
+    console.log(id);
+    let data = {
+        title: "Viewing accounts for user ID",
+        user: req.session.kundID || null,
+        customer: id
+    };
 
     data.res = await bank.showCustomer(id);
 

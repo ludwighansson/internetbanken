@@ -1,13 +1,23 @@
 <%- include("../header", {title: title, user: user}); %>
 <%- include("../nav"); %>
 
-
 <div class="row">
   <div class="centercolumn">
     <div class="card">
 
-      <h1>DASHBOARD PAGE</h1>
-      <!-- Skriv ert skit här -->
+      <h1>DASHBOARD</h1>
+      <p>Välkommen <%= res[0].holder %></p>
+
+      <div class="card2">
+          <form class="frominput" method="post">
+             <fieldset class="fieldsetinput">
+                 <strong>Du har [amount] aktiva konton</strong>
+
+                 <input type="submit" name="doit" value="Visa">
+             </fieldset>
+          </form>
+      </div>
+
     </div>
   </div>
 </div>

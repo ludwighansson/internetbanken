@@ -10,15 +10,19 @@
 
       <pre><%#= JSON.stringify(res, null, 4) %></pre>
 
-      <table>
+      <table id="customers">
           <tr>
-              <th>Id</th>
+              <th>Kontonummer</th>
               <th>Saldo</th>
+              <th>Innehavare</th>
+              <th>Alternativ</th>
           </tr>
       <% for (const row of res) { %>
           <tr>
               <td><%= row.idBankkonto %></td>
               <td><%= row.saldo %></td>
+              <td><%= row.holder %></td>
+              <td></a><a class="fa fa-credit-card"><a class="fa fa-edit"><a class="fa fa-trash-o"></a></td>
           </tr>
       <% }; %>
       </table>
