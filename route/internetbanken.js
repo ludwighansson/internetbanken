@@ -16,11 +16,13 @@ router.get("/index", (req, res) => {
     res.render("bankIndex/index", data);
 });
 
-router.get("/management", (req, res) => {
+router.get("/management", async (req, res) => {
     let data = {
         title: "Welcome to the internetbank",
         user: req.session.kundID || null
     };
+
+    data.res = await bank.printLogg();
 
     res.render("bankIndex/management", data);
 });

@@ -62,3 +62,6 @@ WHERE  am.customerID = 2;
     select * from bankkonto;
     
 call getAllAccountsOnUserID(1);
+
+SELECT * FROM logg
+ORDER BY tid DESC;

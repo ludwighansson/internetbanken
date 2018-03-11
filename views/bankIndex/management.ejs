@@ -8,19 +8,23 @@
       <table id="customers">
         <h3>Loggtabell</h3>
           <tr>
+              <th>Logg id</th>
               <th>Action</th>
               <th>Konto nummer</th>
               <th>Saldo</th>
               <th>SaldoTransaktion</th>
               <th>Tid</th>
           </tr>
+        <% for (const row of res) { %>
           <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td><%= row.loggID %></td>
+              <td><%= row.action %></td>
+              <td><%= row.kontoNummer %></td>
+              <td><%= row.saldo %></td>
+              <td><%= row.saldoTransaktion %></td>
+              <td><%= row.tid %></td>
           </tr>
+        <% }; %>
       </table>
 
     </div>
