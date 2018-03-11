@@ -16,6 +16,15 @@ router.get("/index", (req, res) => {
     res.render("bankIndex/index", data);
 });
 
+router.get("/management", (req, res) => {
+    let data = {
+        title: "Welcome to the internetbank",
+        user: req.session.kundID || null
+    };
+
+    res.render("bankIndex/management", data);
+});
+
 router.get("/customerList", async (req, res) => {
     let data = {
         title: "Våra kunder",
