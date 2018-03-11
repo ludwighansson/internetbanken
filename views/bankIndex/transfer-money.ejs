@@ -4,9 +4,9 @@
 <div class="row">
   <div class="centercolumn">
     <div class="card">
-      <h1>Bankkonton</h1>
+      <h1>Överför pengar från konto: <%= id %></h1>
 
-      <p>Information för bankkont av kund med id nummer: <%= customer %>.</p>
+      <h4>Välj belopp att flytta och sedan till vilket konto.</h4>
 
       <pre><%#= JSON.stringify(res, null, 4) %></pre>
 
@@ -18,15 +18,12 @@
               <th>Alternativ</th>
           </tr>
       <% for (const row of res) { %>
-          <tr>
-              <td><%= row.idBankkonto %></td>
-              <td><%= row.saldo %></td>
-              <td><%= row.holder %></td>
-              <td><a class="fa fa-credit-card" href = "transfer-money/<%= row.idBankkonto %>"></a>
-                  <a class="fa fa-edit"></a>
-                  <a class="fa fa-trash-o"></a>
-              </td>
-          </tr>
+              <tr>
+                  <td><%= row.idBankkonto %></td>
+                  <td><%= row.saldo %></td>
+                  <td><%= row.holder %></td>
+                  <td></a><a class="fa fa-credit-card"><a class="fa fa-edit"><a class="fa fa-trash-o"></a></td>
+              </tr>
       <% }; %>
       </table>
 

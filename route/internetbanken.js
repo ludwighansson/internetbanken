@@ -109,7 +109,6 @@ router.get("/dashboard", async (req, res) => {
 
 router.get("/accounts", async (req, res) => {
     let id = req.session.kundID;
-    console.log(id);
     let data = {
         title: "Viewing accounts for user ID",
         user: req.session.kundID || null,
@@ -119,6 +118,26 @@ router.get("/accounts", async (req, res) => {
     data.res = await bank.showCustomer(id);
 
     res.render("bankIndex/accounts", data);
+});
+
+router.get("/transfer-money/:id", async (req, res) => {
+    let id = req.params.id
+    let userID = req.session.kundID;
+    let data = {
+        title: "Viewing accounts for user ID",
+        user: req.session.kundID || null,
+        accID: id
+    };
+
+    data.res = await bank.showCustomer(userID);
+    data.id = id;
+
+    res.render("bankIndex/transfer-money", data);
+});
+
+router.post("/transfer-money/:id", (req, res) => {
+
+    res.redirect("/bank/accounts");
 });
 
 router.get("/swish", (req, res) => {
