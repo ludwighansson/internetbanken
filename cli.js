@@ -6,6 +6,8 @@
     });
 
     //const blabla = require("filväg");
+    const addUser = require('./src/addUser.js');
+    const shareAccount = require('./src/shareAccount.js');
 
     rl.setPrompt("Choice: ");
     rl.prompt();
@@ -16,12 +18,20 @@
         let lineArray = line.split(" ");
 
         line = lineArray[0];
+        console.log(lineArray);
         switch (line) {
             case "exit":
                 process.exit();
                 break;
             case "menu":
                 printMenu();
+                break;
+            case "addCustomer":
+                await addUser.add(lineArray[1],lineArray[2],lineArray[3],
+                  lineArray[4],lineArray[5],lineArray[6]);
+                break;
+            case "shareAccount":
+                await shareAccount.share(lineArray[1], lineArray[2]);
                 break;
             default:
                 console.log("No command like that exists");
@@ -35,7 +45,13 @@
 function printMenu() {
       console.log(
           "The following commands exists:\n"
-          + "exit       = Closes the program\n"
-          + "menu       = Opens the menu of choices\n"
+          + "exit                                                     "
+          +  "  = Closes the program\n"
+          + "menu                                                     "
+          + "  = Opens the menu of choices\n"
+          + "addCustomer<Fornamn><Efternamn><Fodd><Adress><Ort><Pinkod> "
+          + "= Add a customer to bank\n"
+          + "shareAccount<kundId><KontoId>                            "
+          + "  = Opens the menu of choices\n"
       );
 }
