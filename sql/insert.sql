@@ -42,7 +42,7 @@ CALL shareAccountWithUser(10,2);
 CALL shareAccountWithUser(9, 3);
 CALL shareAccountWithUser(8, 2);
 CALL shareAccountWithUser(12, 3);
-CALL shareAccountWithUser(3, 3);
+CALL shareAccountWithUser(12, 3);
 CALL shareAccountWithUser(4, 3);
 CALL shareAccountWithUser(5, 7);
 CALL shareAccountWithUser(7, 7);
