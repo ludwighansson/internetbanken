@@ -186,4 +186,40 @@ router.get("/swish", (req, res) => {
     res.render("bankIndex/swishapp", data);
 });
 
+router.post("/swish", urlencodedParser, async (req, res) => {
+    let data = {
+        title: "Viewing accounts for user ID",
+        user: req.session.kundID || null
+    };
+
+    let authenticated = await bank.swish(req.body.ownId, req.body.pincode,
+        req.body.amount, req.body.recieverID);
+    //console.log(authenticated[0]);
+
+    if (authenticated[0] == req.body.ownId)
+    {
+        res.redirect("/bank/swish-complete");
+    } else {
+        res.redirect("/bank/swish-failed");
+    }
+});
+
+router.get("/swish-complete", (req, res) => {
+    let data = {
+        title: "Swish App",
+        user: req.session.kundID || null
+    };
+
+    res.render("bankIndex/swish-complete", data);
+});
+
+router.get("/swish-failed", (req, res) => {
+    let data = {
+        title: "Swish App",
+        user: req.session.kundID || null
+    };
+
+    res.render("bankIndex/swish-failed", data);
+});
+
 module.exports = router;

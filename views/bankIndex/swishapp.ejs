@@ -3,10 +3,26 @@
 
 <div class="row">
   <div class="centercolumn">
-    <div class="card">
+    <div class="card2">
 
-      <h1>SWISH PAGE</h1>
-      <!-- Skriv ert skit här -->
+      <h1>SWISH</h1>
+
+      <form class="frominput" method="post">
+         <fieldset class="fieldsetinput">
+              <h4>Välj vilket konto du ska skicka till sedan belopp.</h4>
+              <p>Notera: Vi tar en administrativ kostand på 2% vid varje Swish</p>
+              <legend></legend>
+              <input id="dOwnBankkonto" type="number" name="ownId" placeholder="Ditt användar-ID...">
+              <br>
+              <input id="dOwnBankkonto" type="number" name="pincode" placeholder="Din PIN-kod...">
+              <br>
+              <input id="idBankkonto" type="number" name="recieverID" placeholder="Mottagarens ID...">
+              <br>
+              <input id="amount" type="number" name="amount" placeholder="Summa..">
+              <br>
+              <input type="submit" name="doit" value="Swisha">
+          </fieldset>
+       </form>
     </div>
   </div>
 </div>

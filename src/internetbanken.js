@@ -9,7 +9,8 @@ module.exports = {
     getTotalBankValue : getTotalBankValue,
     getSecretAccountValue: getSecretAccountValue,
     getIDOnCreate: getIDOnCreate,
-    depositMoney: depositMoney
+    depositMoney: depositMoney,
+    swish: swish
 };
 
 const mysql  = require("promise-mysql");
@@ -125,4 +126,21 @@ async function depositMoney(amount, accID) {
 
     res = await db.query(sql, [accID, amount]);
     return res;
+}
+
+async function swish(userID, userPIN, amount, recieverID) {
+    let sql = `CALL loginUser(?, ?)`;
+    let authenticated = await db.query(sql, [userID, userPIN]);
+
+    console.log(authenticated[0]);
+
+    if (authenticated[0].kundID == userID)
+    {
+        sql = `CALL swish(?, ?, ?)`;
+        let res;
+        console.log("Yee");
+        res = await db.query(sql, [recieverID, userID, amount]);
+    }
+
+    return authenticated;
 }

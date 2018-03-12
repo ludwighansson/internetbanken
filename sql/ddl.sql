@@ -120,14 +120,14 @@ WHERE
 	idBankkonto = tillIdBankkonto;
 
 UPDATE bankkonto
-	SET saldo = (saldo - transaktionsPeng) - transaktionsPeng * 0.02
+	SET saldo = saldo -  (transaktionsPeng * 1.02)
 WHERE
 	idBankkonto = franIdBankkonto;
 
 UPDATE bankkonto
-	SET saldo = saldo + transaktionsPeng * 0.02
+	SET saldo = saldo + ((transaktionsPeng * 1.02) - transaktionsPeng)
 WHERE
-	Kund_idKund = "1337";
+	Kund_idKund = "1";
 
 COMMIT;
 
@@ -264,7 +264,7 @@ BEGIN
 	START TRANSACTION;
     
     UPDATE Bankkonto
-    SET saldo = dAmount
+    SET saldo = saldo + dAmount
     WHERE IdBankkonto = dIdBankkonto
     ;
     

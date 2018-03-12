@@ -1,0 +1,18 @@
+<%- include("../header", {title: title, user: user}); %>
+<%- include("../nav"); %>
+<div class="row">
+  <div class="centercolumn">
+    <div class="card2">
+       <form class="frominput" action="/bank/swish" method="get">
+          <fieldset class="fieldsetinput">
+              <h1>Din swishbetaling Gick inte igenom</h1>
+              <p>Kontrollera så du matade in rätt upgifter och har tillräckligt med pengar på kontot,
+                  klicka på kanppen nedanför för att fortsätta</p>
+
+              <input type="submit" name="doit" value="Fortsätt">
+          </fieldset>
+       </form>
+    </div>
+  </div>
+</div>
+<%- include("../footer"); %>
