@@ -10,7 +10,8 @@ module.exports = {
     getSecretAccountValue: getSecretAccountValue,
     getIDOnCreate: getIDOnCreate,
     depositMoney: depositMoney,
-    swish: swish
+    swish: swish,
+    showAccount: showAccount
 };
 
 const mysql  = require("promise-mysql");
@@ -143,4 +144,20 @@ async function swish(userID, userPIN, amount, recieverID) {
     }
 
     return authenticated;
+}
+
+/**
+ * Show customer accounts.
+ *
+ * @async
+ * @param {string} id customer id.
+ * @returns {RowDataPacket} Resultset from the query.
+ */
+async function showAccount(id) {
+    let sql = `CALL getAccountInfo(?);`;
+    let res;
+
+    res = await db.query(sql, [id]);
+
+    return res[0];
 }

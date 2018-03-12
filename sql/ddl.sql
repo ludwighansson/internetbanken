@@ -152,6 +152,7 @@ CREATE PROCEDURE getAllAccountsOnUserID(
 )
 BEGIN
 	SELECT
+		am.accountID,
 		b.idBankkonto,
 		b.saldo,
 		CONCAT(k.fornamn, ' ', k.efternamn, ' (Kund ID: ', k.idKund, ')') AS holder
@@ -321,9 +322,23 @@ END
 ;;
 DELIMITER ;
 
-
-
-
+DROP PROCEDURE IF EXISTS getAccountInfo;
+DELIMITER ;;
+CREATE PROCEDURE getAccountInfo(
+	accID INT(11)
+)
+BEGIN
+	SELECT 
+	am.accountID  AS ID,
+	CONCAT(k.fornamn, ' ', k.efternamn, ' (Kund ID: ', k.idKund, ')') AS namn
+    FROM accountManager AS am
+		JOIN Kund AS k
+			ON k.idKund = am.customerID
+	WHERE am.accountID = accID
+    ;
+END
+;;
+DELIMITER ;
 
 
 

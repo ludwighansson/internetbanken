@@ -137,6 +137,21 @@ router.get("/accounts", async (req, res) => {
     res.render("bankIndex/accounts", data);
 });
 
+router.get("/view-account/:id", async (req, res) => {
+    let id = req.params.id;
+    let userID = req.session.kundID;
+    let data = {
+        title: "Viewing accounts for user ID",
+        user: req.session.kundID || null,
+        accID: id
+    };
+
+    data.res = await bank.showAccount(id);
+    data.id = id;
+
+    res.render("bankIndex/view-account", data);
+});
+
 router.get("/transfer-money/:id", async (req, res) => {
     let id = req.params.id;
     let userID = req.session.kundID;

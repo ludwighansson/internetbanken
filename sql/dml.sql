@@ -66,6 +66,23 @@ call getAllAccountsOnUserID(1);
 SELECT * FROM logg
 ORDER BY tid DESC;
 
+
+SELECT 
+	am.accountID  AS ID,
+	CONCAT(k.fornamn, ' ', k.efternamn, ' (Kund ID: ', k.idKund, ')') AS namn
+    FROM accountManager AS am
+		JOIN Kund AS k
+			ON k.idKund = am.customerID
+	
+;
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

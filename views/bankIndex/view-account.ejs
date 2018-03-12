@@ -1,0 +1,27 @@
+<%- include("../header", {title: title, user: user}); %>
+<%- include("../nav"); %>
+<div class="row">
+  <div class="centercolumn">
+    <div class="card2">
+       <table id="customers">
+              <h1>Information om konto: <%= accID %></h1>
+
+              <% console.log(res) %>
+
+              <h4>Här ser du vilka som kontot delas med.</h4>
+              <tr>
+                  <th>Namn</th>
+                  <th>Alternativ</th>
+              </tr>
+          <% for (const row of res) { %>
+              <tr>
+                  <td><%= row.namn %></td>
+                  <td><%= row.ID %></td>
+              </tr>
+          <% }; %>
+      </table>
+    </div>
+  </div>
+</div>
+
+<%- include("../footer"); %>
