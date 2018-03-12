@@ -12,7 +12,9 @@
               <h4>Välj vilket konto du ska skicka till sedan belopp.</h4>
               <p>Notera: Vi tar en administrativ kostand på 2% vid varje Swish</p>
               <legend></legend>
-              <input id="dOwnBankkonto" type="number" name="ownId" placeholder="Ditt användar-ID...">
+              <input id="dOwnBankkonto" type="number" name="ownId" readonly value="<%= user %>">
+              <br>
+              <input id="ownBankId" type="number" name="ownBankId">
               <br>
               <input id="dOwnBankkonto" type="number" name="pincode" placeholder="Din PIN-kod...">
               <br>

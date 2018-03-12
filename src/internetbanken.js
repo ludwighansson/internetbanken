@@ -134,13 +134,15 @@ async function swish(userID, userPIN, amount, recieverID) {
     let authenticated = await db.query(sql, [userID, userPIN]);
 
     console.log(authenticated[0]);
-
-    if (authenticated[0].kundID == userID)
+    console.log(userID);
+    if (authenticated[0] == userID)
     {
         sql = `CALL swish(?, ?, ?)`;
         let res;
         console.log("Yee");
         res = await db.query(sql, [recieverID, userID, amount]);
+
+
     }
 
     return authenticated;
