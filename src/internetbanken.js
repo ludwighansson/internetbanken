@@ -7,7 +7,9 @@ module.exports = {
     transferMoney: transferMoney,
     printLogg: printLogg,
     getTotalBankValue : getTotalBankValue,
-    getSecretAccountValue: getSecretAccountValue
+    getSecretAccountValue: getSecretAccountValue,
+    getIDOnCreate: getIDOnCreate,
+    depositMoney: depositMoney
 };
 
 const mysql  = require("promise-mysql");
@@ -106,5 +108,21 @@ async function getSecretAccountValue() {
     let res;
 
     res = await db.query(sql);
+    return res;
+}
+
+async function getIDOnCreate() {
+    let sql = `SELECT idKund FROM Kund ORDER BY idKund DESC LIMIT 1;`;
+    let res;
+
+    res = await db.query(sql);
+    return res;
+}
+
+async function depositMoney(amount, accID) {
+    let sql = `CALL depositMoney(?, ?)`;
+    let res;
+
+    res = await db.query(sql, [accID, amount]);
     return res;
 }

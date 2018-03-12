@@ -57,11 +57,13 @@ router.post("/register", urlencodedParser, async (req, res) => {
       res.redirect("/bank/register/complete");
 });
 
-router.get("/register/complete", (req, res) => {
+router.get("/register/complete", async (req, res) => {
     let data = {
         title: "Register Complete",
         user: req.session.kundID || null
     };
+
+    data.res = await bank.getIDOnCreate();
 
     res.render("bankIndex/register-complete", data);
 });
@@ -154,6 +156,25 @@ router.post("/transfer-money/:id", urlencodedParser, async (req, res) => {
     await bank.transferMoney(req.body.ownId, req.body.idBankkonto, req.body.amount);
 
     res.redirect("/bank/accounts");
+});
+
+router.get("/deposit", async (req, res) => {
+    let data = {
+        title: "Viewing accounts for user ID",
+        user: req.session.kundID || null
+    };
+
+    res.render("bankIndex/deposit", data);
+});
+
+router.post("/deposit", urlencodedParser, async (req, res) => {
+    let data = {
+        title: "Viewing accounts for user ID",
+        user: req.session.kundID || null
+    };
+
+    await bank.depositMoney(req.body.amount, req.body.accountNr);
+    res.redirect("/bank/index");
 });
 
 router.get("/swish", (req, res) => {

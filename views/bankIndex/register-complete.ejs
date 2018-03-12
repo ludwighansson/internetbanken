@@ -3,9 +3,12 @@
 <div class="row">
   <div class="centercolumn">
     <div class="card2">
-       <form class="frominput" method="post">
+       <form class="frominput" action="/bank/login" method="get">
           <fieldset class="fieldsetinput">
               <h1>Ditt konto är nu registrerat</h1>
+              <p>Ditt inloggnings-ID är <strong><%= res[0].idKund %></strong></p>
+
+              <input type="submit" name="doit" value="Logga in">
           </fieldset>
        </form>
     </div>

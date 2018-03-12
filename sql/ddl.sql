@@ -194,7 +194,7 @@ BEGIN
     DESC LIMIT 1;
 
     INSERT INTO accountManager(accountID, customerID)
-	VALUES (@kundID, @bankID);
+	VALUES (@bankID, @kundID);
 
 
 END
@@ -232,7 +232,6 @@ BEGIN
 	VALUES (@bankID, userID);
 END
 //
-
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS loginUser;
@@ -294,8 +293,14 @@ BEGIN
     ;
     
     UPDATE Bankkonto
-    SET saldo = saldo - dAmount
+    SET saldo = saldo - (dAmount * 1.03)
     WHERE idBankkonto = dOwnBankkonto
+    ;
+    
+    UPDATE Bankkonto
+    SET saldo = saldo + ((dAmount * 1.03) - dAmount )
+    WHERE idBankkonto = 1
+    
     ;
     
     COMMIT;

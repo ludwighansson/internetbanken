@@ -1,0 +1,20 @@
+<%- include("../header", {title: title, user: user}); %>
+<%- include("../nav"); %>
+<div class="row">
+  <div class="centercolumn">
+    <div class="card2">
+       <form class="frominput" method="post">
+          <fieldset class="fieldsetinput">
+              <h1>Sätt in pengar på ett konto</h1>
+              <legend></legend>
+              <input id="dOwnBankkonto" type="number" name="amount" placeholder="Belopp...">
+              <br>
+              <input id="idBankkonto" type="number" name="accountNr" placeholder="Kontonummer..">
+              <br>
+              <input type="submit" name="doit" value="Sätt in">
+          </fieldset>
+       </form>
+    </div>
+  </div>
+</div>
+<%- include("../footer"); %>
