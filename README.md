@@ -1,22 +1,16 @@
 # internetbanken
 
-OBS! Du måste stå i rätt mapp där din .git fil finns
+This project is a part of the course "Webbprogrammering och databaser (PA1444)"
 
------- För att ladda ner repot till din dator -----
-git clone https://github.com/LuddeH98/internetbanken
+[HOW TO USE]
 
------- För att ladda ner det senaste från master ----
-git pull origin master
+1. Open terminal and go to the project directory
+2. Start server with "node index.js", or "node cli.js" for Command-Line tools
+3. The server starts on port 1337
+4. Open your browser and input "localhost:1337/bank/index" to access the web interface
 
------- Välj vilka filer som ska laddas upp ----
-git add <filnamn>       Specifik fil eller mapp
-ELLER
-git add .               För alla filer ifrån mappen du står i
-
-
-
-------- För mer info följ guiden -------
-http://rogerdudler.github.io/git-guide/
-
-
-simon e fett äckligt.
+[REQUIRED NODE MODULES]
+  mysql
+  promise-mysql
+  express
+  express-sessions
