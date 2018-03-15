@@ -31,11 +31,11 @@ CALL depositMoney(8, 5390);
 CALL depositMoney(9, 1590);
 CALL depositMoney(10, 2530);
 CALL depositMoney(11, 6539);
-CALL depositMoney(12, 65);
+CALL depositMoney(12, 605);
 CALL depositMoney(13, 653);
 CALL depositMoney(14, 639);
 CALL depositMoney(15, 339);
-CALL depositMoney(16, 29);
+CALL depositMoney(16, 290);
 
 
 CALL shareAccountWithUser(10,2);

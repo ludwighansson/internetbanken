@@ -340,10 +340,23 @@ END
 ;;
 DELIMITER ;
 
+DROP PROCEDURE IF EXISTS calculateInterest;
+DELIMITER ;;
+CREATE PROCEDURE calculateInterest(
+	interestRate INT(11),
+    dateOfCalculation TIMESTAMP
+)
+BEGIN
+	SELECT 
+		(interestRate * saldo) / 365 AS rate,
+        dateOfCalculation AS date,
+        idBankkonto AS id
+        FROM bankkonto;
+END
+;;
+DELIMITER ;
 
-
-
-
+CALL calculateInterest(5, CURRENT_TIMESTAMP());
 
 
 
