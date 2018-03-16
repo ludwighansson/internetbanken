@@ -348,15 +348,16 @@ CREATE PROCEDURE calculateInterest(
 )
 BEGIN
 	SELECT 
-		(interestRate * saldo) / 365 AS rate,
+		(interestRate * b.saldo) / 365 AS rate,
         dateOfCalculation AS date,
-        idBankkonto AS id
-        FROM bankkonto;
+        b.idBankkonto AS id
+        FROM bankkonto AS b;
 END
 ;;
 DELIMITER ;
 
 CALL calculateInterest(5, CURRENT_TIMESTAMP());
+
 
 
 

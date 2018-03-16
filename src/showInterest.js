@@ -8,20 +8,23 @@ const showInterest  = {
 
         let str;
 
-        str = await showAccount(db, rate);
+        str = await showAccountInterest(db, rate);
+
         console.log(str);
         return;
     }
 
 };
 
-async function showAccount(db, rate) {
+async function showAccountInterest(db, rate) {
     let sql;
     let res;
+    let str;
 
-    sql = `CALL calculateInterest(?, CURRENT_TIMESTAMP());`;
+    sql = `CALL calculateInterest(${rate}, CURRENT_TIMESTAMP());`;
 
       res = await db.query(sql, [rate]);
+      console.log(res);
       str = interestAsTable(res);
       return str;
 }
@@ -36,7 +39,7 @@ function interestAsTable(res) {
     for (const row of res) {
         str += "| " + row.rate.toString().padEnd(13);
         str += "  | " + row.date.toString().padEnd(5);
-        str += "   | " + row.id.padEnd(30);
+        str += "   | " + row.idBankkonto.toString().padEnd(30);
         str += "| \n";
 
     }
