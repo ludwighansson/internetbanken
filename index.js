@@ -11,7 +11,7 @@ const middleware = require("./middleware/index.js");
 app.set("view engine", "ejs");
 
 app.use(session({
-    secret : "internetbanken",
+    secret: "internetbanken",
     resave: false,
     saveUninitialized: true
 }));

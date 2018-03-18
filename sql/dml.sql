@@ -8,6 +8,7 @@ SELECT
 			JOIN Kund AS k
 				ON k.idKund = b.Kund_idKund;
                 
+                
 call addAccountToUser(1);
 			
 select * from bankkonto;

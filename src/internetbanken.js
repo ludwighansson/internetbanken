@@ -6,7 +6,7 @@ module.exports = {
     customerList: customerList,
     transferMoney: transferMoney,
     printLogg: printLogg,
-    getTotalBankValue : getTotalBankValue,
+    getTotalBankValue: getTotalBankValue,
     getSecretAccountValue: getSecretAccountValue,
     getIDOnCreate: getIDOnCreate,
     depositMoney: depositMoney,
@@ -135,16 +135,14 @@ async function swish(userID, userPIN, amount, recieverID) {
 
     console.log(authenticated[0]);
     console.log(userID);
-    if (authenticated[0] == userID)
-    {
+    if (authenticated[0] == userID) {
         sql = `CALL swish(?, ?, ?)`;
         let res;
+    
         console.log("Yee");
         res = await db.query(sql, [recieverID, userID, amount]);
-
-
+        return res;
     }
-
     return authenticated;
 }
 

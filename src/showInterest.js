@@ -1,5 +1,5 @@
 const showInterest  = {
-  show: async function(rate) {
+    show: async function(rate) {
         const mysql = require("promise-mysql");
         const config = require("../config/internetbanken.json");
         const db = await mysql.createConnection(config);
@@ -23,10 +23,10 @@ async function showAccountInterest(db, rate) {
 
     sql = `CALL calculateInterest(${rate}, CURRENT_TIMESTAMP());`;
 
-      res = await db.query(sql, [rate]);
-      console.log(res);
-      str = interestAsTable(res);
-      return str;
+    res = await db.query(sql, [rate]);
+    console.log(res);
+    str = interestAsTable(res);
+    return str;
 }
 
 function interestAsTable(res) {
@@ -41,7 +41,6 @@ function interestAsTable(res) {
         str += "  | " + row.date.toString().padEnd(5);
         str += "   | " + row.idBankkonto.toString().padEnd(30);
         str += "| \n";
-
     }
     str += "+----------------+---------+-------------------------------+";
 

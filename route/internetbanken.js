@@ -23,7 +23,7 @@ router.get("/management", async (req, res) => {
         title: "Welcome to the internetbank",
         user: req.session.kundID || null,
         totalValue: sum[0],
-        saValue : saValue[0]
+        saValue: saValue[0]
     };
 
     data.res = await bank.printLogg();
@@ -40,7 +40,7 @@ router.get("/customerList", async (req, res) => {
     data.res = await bank.customerList();
 
     res.render("bankIndex/customerList", data);
-})
+});
 
 router.get("/register", (req, res) => {
     let data = {
@@ -53,8 +53,8 @@ router.get("/register", (req, res) => {
 
 router.post("/register", urlencodedParser, async (req, res) => {
     await bank.registerKund(req.body.fornamn, req.body.efternamn, req.body.fodd,
-      req.body.adress, req.body.ort, req.body.pinkod);
-      res.redirect("/bank/register/complete");
+        req.body.adress, req.body.ort, req.body.pinkod);
+    res.redirect("/bank/register/complete");
 });
 
 router.get("/register/complete", async (req, res) => {
@@ -69,7 +69,7 @@ router.get("/register/complete", async (req, res) => {
 });
 
 router.post("/register/complete", urlencodedParser, async (req, res) => {
-      res.redirect("/bank/login");
+    res.redirect("/bank/login");
 });
 
 router.get("/login", (req, res) => {
@@ -112,6 +112,7 @@ router.post("/logout", (req, res) => {
 
 router.get("/dashboard", async (req, res) => {
     let id = req.session.kundID;
+
     console.log(id);
     let data = {
         title: "Viewing accounts for user ID",
@@ -139,7 +140,6 @@ router.get("/accounts", async (req, res) => {
 
 router.get("/view-account/:id", async (req, res) => {
     let id = req.params.id;
-    let userID = req.session.kundID;
     let data = {
         title: "Viewing accounts for user ID",
         user: req.session.kundID || null,
@@ -183,11 +183,6 @@ router.get("/deposit", async (req, res) => {
 });
 
 router.post("/deposit", urlencodedParser, async (req, res) => {
-    let data = {
-        title: "Viewing accounts for user ID",
-        user: req.session.kundID || null
-    };
-
     await bank.depositMoney(req.body.amount, req.body.accountNr);
     res.redirect("/bank/index");
 });
@@ -202,17 +197,11 @@ router.get("/swish", (req, res) => {
 });
 
 router.post("/swish", urlencodedParser, async (req, res) => {
-    let data = {
-        title: "Viewing accounts for user ID",
-        user: req.session.kundID || null
-    };
-
     let authenticated = await bank.swish(req.body.ownId, req.body.pincode,
         req.body.amount, req.body.recieverID);
     //console.log(authenticated[0]);
 
-    if (authenticated[0] == req.body.ownId)
-    {
+    if (authenticated[0] == req.body.ownId) {
         res.redirect("/bank/swish-complete");
     } else {
         res.redirect("/bank/swish-failed");

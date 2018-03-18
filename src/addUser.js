@@ -1,12 +1,12 @@
 const addUser =
 {
-   add: async function(fornamn, efternamn, fodd, adress, ort, pinkod) {
+    add: async function(fornamn, efternamn, fodd, adress, ort, pinkod) {
         const mysql = require("promise-mysql");
         const config = require("../config/internetbanken.json");
         const db = await mysql.createConnection(config);
 
         fornamn = fornamn.trim();
-        efternamn = efternamn.trim()
+        efternamn = efternamn.trim();
         fodd = fodd.trim();
         adress = adress.trim();
         ort = ort.trim();
@@ -14,7 +14,8 @@ const addUser =
 
         let str;
 
-        await addCustomer(db, fornamn, efternamn, fodd, adress, ort, pinkod);
+        str = await addCustomer(db, fornamn, efternamn, fodd, adress, ort, pinkod);
+        console.log(str);
         return;
     }
 
@@ -23,7 +24,6 @@ const addUser =
 async function addCustomer(db, fornamn, efternamn, fodd, adress, ort, pinkod) {
     let sql;
     let res;
-    let str;
 
     sql = ` CALL createUser(?, ?, ?, ?, ?, ?);`;
 

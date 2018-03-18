@@ -1,5 +1,5 @@
 const showAccounts = {
-  show: async function() {
+    show: async function() {
         const mysql = require("promise-mysql");
         const config = require("../config/internetbanken.json");
         const db = await mysql.createConnection(config);
@@ -29,10 +29,10 @@ async function showAccount(db) {
 				ON k.idKund = b.Kund_idKund
 			ORDER BY holder ASC;`;
 
-      res = await db.query(sql);
-      console.log(res);
-      str = accountsAsTable(res);
-      return str;
+    res = await db.query(sql);
+    console.log(res);
+    str = accountsAsTable(res);
+    return str;
 }
 
 function accountsAsTable(res) {
@@ -47,8 +47,7 @@ function accountsAsTable(res) {
         str += "  | " + row.saldo.toString().padEnd(5);
         str += "   | " + row.holder.padEnd(30);
         str += "| \n";
-
-    }
+}
     str += "+----------------+---------+-------------------------------+";
 
     return str;

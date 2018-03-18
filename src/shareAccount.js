@@ -1,6 +1,6 @@
 const shareAccount =
 {
-  share: async function(kundId, kontoId) {
+    share: async function(kundId, kontoId) {
         const mysql = require("promise-mysql");
         const config = require("../config/internetbanken.json");
         const db = await mysql.createConnection(config);
@@ -10,7 +10,8 @@ const shareAccount =
 
         let str;
 
-        await shareAccountWithUser(db, kundId, kontoId);
+        str = await shareAccountWithUser(db, kundId, kontoId);
+        console.log(str);
         return;
     }
 

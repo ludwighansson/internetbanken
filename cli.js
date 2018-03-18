@@ -29,8 +29,8 @@
                 printMenu();
                 break;
             case "addCustomer":
-                await addUser.add(lineArray[1],lineArray[2],lineArray[3],
-                  lineArray[4],lineArray[5],lineArray[6]);
+                await addUser.add(lineArray[1], lineArray[2], lineArray[3],
+                    lineArray[4], lineArray[5], lineArray[6]);
                 break;
             case "shareAccount":
                 await shareAccount.share(lineArray[1], lineArray[2]);
@@ -51,8 +51,8 @@
 })();
 
 function printMenu() {
-      console.log(
-          "The following commands exists:\n"
+    console.log(
+        "The following commands exists:\n"
           + "exit                                                     "
           +  "  = Closes the program\n"
           + "menu                                                     "
@@ -65,5 +65,5 @@ function printMenu() {
           + "  = Shows all account holders with their accounts\n"
           + "showInterest                                             "
           + " = Shows the accumulated interest together with the accounts"
-      );
+    );
 }
