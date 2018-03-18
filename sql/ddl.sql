@@ -106,11 +106,20 @@ VALUES ('INSERT', NEW.idBankkonto, NEW.saldo, NEW.saldo);
 DROP PROCEDURE IF EXISTS swish;
 DELIMITER ;;
 CREATE PROCEDURE swish(
+	cidKund INT(11),
+    cpinkod INT(4),
 	tillIdBankkonto INT,
     franIdBankkonto INT,
     transaktionsPeng INT
 )
 BEGIN
+
+DECLARE loginResult INT;
+SET loginResult = loginUser2(cidKund, cpinkod);
+
+IF loginResult IS NOT NULL 
+
+THEN
 
 START TRANSACTION;
 
@@ -130,6 +139,11 @@ WHERE
 	Kund_idKund = "1";
 
 COMMIT;
+
+ELSE 
+ROLLBACK;
+
+END IF;
 
 END
 ;;
@@ -249,6 +263,27 @@ BEGIN
     idKund = cidKund
       AND pinkod = cPinkod
     ;
+END
+;;
+DELIMITER ;
+
+DROP FUNCTION IF EXISTS loginUser2;
+DELIMITER ;;
+CREATE FUNCTION loginUser2(
+    cidKund INT(11),
+    cpinkod INT(4)
+)
+RETURNS INT
+BEGIN
+    IF (SELECT idKund 
+    FROM kund
+    WHERE idKund = cidKund
+    AND pinkod = cpinkod) = cidKund
+    THEN RETURN cidKund;
+    ELSE
+    RETURN NULL;
+    
+    END IF;
 END
 ;;
 DELIMITER ;

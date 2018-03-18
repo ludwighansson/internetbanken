@@ -130,21 +130,12 @@ async function depositMoney(amount, accID) {
     return res;
 }
 
-async function swish(userID, userPIN, amount, recieverID) {
-    let sql = `CALL loginUser(?, ?)`;
-    let authenticated = await db.query(sql, [userID, userPIN]);
-
-    console.log(authenticated[0]);
-    console.log(userID);
-    if (authenticated[0] == userID) {
-        sql = `CALL swish(?, ?, ?)`;
+async function swish(userID, userPIN, recieverID, ownBankId, amount) {
+        let sql = `CALL swish(?,?,?,?,?)`;
         let res;
 
-        console.log("Yee");
-        res = await db.query(sql, [recieverID, userID, amount]);
+        res = await db.query(sql, [userID, userPIN, recieverID, ownBankId, amount]);
         return res;
-    }
-    return authenticated;
 }
 
 async function accumulatedInterest(accID, interestRate) {

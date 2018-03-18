@@ -15,7 +15,6 @@ const addUser =
         let str;
 
         str = await addCustomer(db, fornamn, efternamn, fodd, adress, ort, pinkod);
-        console.log(str);
         return;
     }
 

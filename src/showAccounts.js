@@ -30,7 +30,6 @@ async function showAccount(db) {
 			ORDER BY holder ASC;`;
 
     res = await db.query(sql);
-    console.log(res);
     str = accountsAsTable(res);
     return str;
 }

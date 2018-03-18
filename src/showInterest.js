@@ -24,6 +24,7 @@ async function showAccountInterest(db, rate) {
     sql = `CALL calculateInterest(${rate}, CURRENT_TIMESTAMP());`;
 
     res = await db.query(sql, [rate]);
+    res = res[0];
     console.log(res);
     str = interestAsTable(res);
     return str;
@@ -43,7 +44,6 @@ function interestAsTable(res) {
         str += "| \n";
     }
     str += "+----------------+---------+-------------------------------+";
-
     return str;
 }
 

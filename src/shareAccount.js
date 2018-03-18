@@ -11,7 +11,6 @@ const shareAccount =
         let str;
 
         str = await shareAccountWithUser(db, kundId, kontoId);
-        console.log(str);
         return;
     }
 

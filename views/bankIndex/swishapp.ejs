@@ -12,15 +12,15 @@
               <h4>Välj vilket konto du ska skicka till sedan belopp.</h4>
               <p>Notera: Vi tar en administrativ kostand på 2% vid varje Swish</p>
               <legend></legend>
-              <input id="dOwnBankkonto" type="number" name="ownId" readonly value="<%= user %>">
+              <input id="ownId" type="number" name="ownId" placeholder="Ditt användare Id...">
               <br>
-              <input id="ownBankId" type="number" name="ownBankId">
+              <input id="pinkod" type="password" name="pinkod" placeholder="Din PIN-kod...">
               <br>
-              <input id="dOwnBankkonto" type="number" name="pincode" placeholder="Din PIN-kod...">
+              <input id="franIdBankkonto" type="number" name="franIdBankkonto" placeholder="Ditt bankkonto nummer..">
               <br>
-              <input id="idBankkonto" type="number" name="recieverID" placeholder="Mottagarens ID...">
+              <input id="tillIdBankkonto" type="number" name="tillIdBankkonto" placeholder="Mottagarens ID...">
               <br>
-              <input id="amount" type="number" name="amount" placeholder="Summa..">
+              <input id="transaktionsPeng" type="number" name="transaktionsPeng" placeholder="Summa..">
               <br>
               <input type="submit" name="doit" value="Swisha">
           </fieldset>

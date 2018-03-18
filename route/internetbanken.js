@@ -197,15 +197,10 @@ router.get("/swish", (req, res) => {
 });
 
 router.post("/swish", urlencodedParser, async (req, res) => {
-    let authenticated = await bank.swish(req.body.ownId, req.body.pincode,
-        req.body.amount, req.body.recieverID);
-    //console.log(authenticated[0]);
+        await bank.swish(req.body.ownId, req.body.pinkod,
+        req.body.tillIdBankkonto, req.body.franIdBankkonto, req.body.transaktionsPeng);
 
-    if (authenticated[0] == req.body.ownId) {
         res.redirect("/bank/swish-complete");
-    } else {
-        res.redirect("/bank/swish-failed");
-    }
 });
 
 router.get("/swish-complete", (req, res) => {
