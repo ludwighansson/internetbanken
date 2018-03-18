@@ -63,7 +63,7 @@ function printMenu() {
           + "  = Opens the menu of choices\n"
           + "showAccounts                                             "
           + "  = Shows all account holders with their accounts\n"
-          + "showInterest                                             "
+          + "showInterest<rate>                                             "
           + " = Shows the accumulated interest together with the accounts"
     );
 }

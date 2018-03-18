@@ -356,7 +356,25 @@ END
 ;;
 DELIMITER ;
 
-CALL calculateInterest(5, CURRENT_TIMESTAMP());
+DROP PROCEDURE IF EXISTS calculateSingleInterest;
+DELIMITER ;;
+CREATE PROCEDURE calculateSingleInterest(
+	accID INT(11),
+    interestRate INT(11),
+    dateOfCalculation TIMESTAMP
+)
+BEGIN
+	SELECT 
+		(interestRate * saldo) / 365 AS rate,
+        dateOfCalculation AS date,
+        idBankkonto as id
+        FROM bankkonto
+        WHERE idBankkonto = accID;
+END
+;;
+DELIMITER ;
+
+CALL calculateSingleInterest(3, 5, CURRENT_TIMESTAMP());
 
 
 

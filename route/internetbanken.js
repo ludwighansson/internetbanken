@@ -226,4 +226,29 @@ router.get("/swish-failed", (req, res) => {
     res.render("bankIndex/swish-failed", data);
 });
 
+router.get("/accumulatedInterest/:id", async (req, res) => {
+    let id = req.params.id;
+    let data = {
+        title: "Calculate interest",
+        user: req.session.kundID || null,
+        accID: id
+    };
+
+    data.res = await bank.showAccount(id);
+
+    res.render("bankIndex/accumulatedInterest", data);
+});
+
+router.post("/accumulatedInterest/:id", urlencodedParser, async (req, res) => {
+    let id = req.params.id;
+    let data = {
+        title: "Show interest",
+        user: req.session.kundID,
+        accID: id
+    }
+
+    data.res = await bank.accumulatedInterest(req.body.accID, req.body.interestRate);
+    res.render("bankIndex/showAccumulatedInterest", data);
+});
+
 module.exports = router;

@@ -11,7 +11,8 @@ module.exports = {
     getIDOnCreate: getIDOnCreate,
     depositMoney: depositMoney,
     swish: swish,
-    showAccount: showAccount
+    showAccount: showAccount,
+    accumulatedInterest: accumulatedInterest
 };
 
 const mysql  = require("promise-mysql");
@@ -138,12 +139,20 @@ async function swish(userID, userPIN, amount, recieverID) {
     if (authenticated[0] == userID) {
         sql = `CALL swish(?, ?, ?)`;
         let res;
-    
+
         console.log("Yee");
         res = await db.query(sql, [recieverID, userID, amount]);
         return res;
     }
     return authenticated;
+}
+
+async function accumulatedInterest(accID, interestRate) {
+    let sql = `CALL calculateSingleInterest(?,?, CURRENT_TIMESTAMP());`;
+    let res;
+
+    res = await db.query(sql, [accID, interestRate]);
+    return res;
 }
 
 /**

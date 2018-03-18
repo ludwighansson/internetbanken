@@ -1,0 +1,22 @@
+<%- include("../header", {title: title, user: user}); %>
+<%- include("../nav"); %>
+<div class="row">
+  <div class="centercolumn">
+    <div class="card2">
+       <form class="frominput" method="post">
+          <fieldset class="fieldsetinput">
+              <h1>Visa accumumlated interest för kontonr: <%= accID %></h1>
+
+              <h4>Skriv in räntan på den accumulated interesten.</h4>
+              <legend></legend>
+              <input id="accID" type="number" name="accId" readonly value="<%= accID %>">
+              <br>
+              <input id="interestRate" type="number" name="interestRate" placeholder="Ränta..">
+              <br>
+              <input type="submit" name="doit" value="Beräkna">
+          </fieldset>
+       </form>
+    </div>
+  </div>
+</div>
+<%- include("../footer"); %>
