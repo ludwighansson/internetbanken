@@ -25,7 +25,6 @@ async function showAccountInterest(db, rate) {
 
     res = await db.query(sql, [rate]);
     res = res[0];
-    console.log(res);
     str = interestAsTable(res);
     return str;
 }
@@ -33,17 +32,17 @@ async function showAccountInterest(db, rate) {
 function interestAsTable(res) {
     let str;
 
-    str  = "+----------------+---------+-------------------------------+\n";
-    str += "|  Bankkonto id  |  Saldo  |  Kontoinnehavare              |\n";
-    str += "+----------------+---------+-------------------------------+\n";
+    str  = "+------------------------+--------------------------------------------------------------+-----------+\n";
+    str += "|  Accumulated interest  |                             Date                             |  Bank ID  |\n";
+    str += "+------------------------+--------------------------------------------------------------+-----------+\n";
 
     for (const row of res) {
-        str += "| " + row.rate.toString().padEnd(13);
-        str += "  | " + row.date.toString().padEnd(5);
-        str += "   | " + row.idBankkonto.toString().padEnd(30);
+        str += "|       " + row.rate.toString().padEnd(15);
+        str += "  | " + row.date.toString().padEnd(58);
+        str += "   |     " + row.id.toString().padEnd(6);
         str += "| \n";
     }
-    str += "+----------------+---------+-------------------------------+";
+    str += "+------------------------+--------------------------------------------------------------+-----------+";
     return str;
 }
 
