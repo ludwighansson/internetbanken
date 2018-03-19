@@ -38,9 +38,9 @@ function interestAsTable(res) {
 
     for (const row of res) {
         str += "|       " + row.rate.toString().padEnd(15);
-        str += "  | " + row.date.toString().padEnd(58);
-        str += "   |     " + row.id.toString().padEnd(6);
-        str += "| \n";
+        str += "  | " + row.date.toString().padEnd(56);
+        str += "  |     " + row.id.toString().padEnd(5);
+        str += " | \n";
     }
     str += "+------------------------+--------------------------------------------------------------+-----------+";
     return str;

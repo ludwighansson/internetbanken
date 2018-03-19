@@ -79,8 +79,14 @@ SELECT
     
     
     
-    
-    
+
+CALL calculateSingleInterest(3, 5, CURRENT_TIMESTAMP());
+
+SELECT * from calculateLogg;
+
+CALL showCalculateForYear(2018);
+
+
     
     
     

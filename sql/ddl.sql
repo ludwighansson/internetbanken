@@ -73,6 +73,16 @@ CREATE TABLE IF NOT EXISTS `internetbanken`.`logg` (
 ENGINE = InnoDB;
 
 
+DROP TABLE IF EXISTS calculateLogg;
+CREATE TABLE IF NOT EXISTS `internetbanken`.`calculateLogg` (
+	calculateID INT(11) NOT NULL AUTO_INCREMENT,
+  `kontoId` INT NOT NULL,
+  `rate` INT,
+  `tid` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (calculateID))
+ENGINE = InnoDB;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
@@ -375,7 +385,7 @@ END
 ;;
 DELIMITER ;
 
-DROP PROCEDURE IF EXISTS calculateInterest;
+DROP PROCEDURE IF EXISTS 
 DELIMITER ;;
 CREATE PROCEDURE calculateInterest(
 	interestRate INT(11),
@@ -387,6 +397,10 @@ BEGIN
         dateOfCalculation AS date,
         b.idBankkonto AS id
         FROM bankkonto AS b;
+	
+    INSERT INTO calculateLogg (kontoId, rate) 
+    SELECT idBankkonto, (interestRate * saldo) / 365
+    FROM bankkonto;
 END
 ;;
 DELIMITER ;
@@ -405,17 +419,25 @@ BEGIN
         idBankkonto as id
         FROM bankkonto
         WHERE idBankkonto = accID;
+        
+	INSERT INTO calculateLogg (kontoId, rate) 
+    SELECT idBankkonto, (interestRate * saldo) / 365
+    FROM bankkonto 
+    WHERE idBankkonto = accID;
+    
 END
 ;;
 DELIMITER ;
 
-CALL calculateSingleInterest(3, 5, CURRENT_TIMESTAMP());
 
-
-
-
-
-
-
-
-
+DROP PROCEDURE IF EXISTS showCalculateForYear;
+DELIMITER ;;
+CREATE PROCEDURE showCalculateForYear(
+	aYear int(4)
+)
+BEGIN
+	Select * FROM calculateLogg
+    WHERE YEAR(tid) = aYear;
+END
+;;
+DELIMITER ;
