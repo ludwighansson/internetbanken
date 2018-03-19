@@ -143,6 +143,7 @@ async function accumulatedInterest(accID, interestRate) {
     let res;
 
     res = await db.query(sql, [accID, interestRate]);
+    res = res[0];
     return res;
 }
 
