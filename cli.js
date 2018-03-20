@@ -5,11 +5,12 @@
         output: process.stdout
     });
 
-    //const blabla = require("filväg");
     const addUser = require('./src/addUser.js');
     const shareAccount = require('./src/shareAccount.js');
     const showAccounts = require('./src/showAccounts.js');
     const showInterest = require('./src/showInterest.js');
+    const showInterestYear = require('./src/showInterestYear.js');
+    const showInterestDay = require('./src/showInterestDay.js');
 
     rl.setPrompt("Choice: ");
     rl.prompt();
@@ -41,6 +42,12 @@
             case "showInterest":
                 await showInterest.show(lineArray[1]);
                 break;
+            case "showInterestYear":
+                await showInterestYear.show(lineArray[1]);
+                break;
+            case "showInterestDay":
+                await showInterestDay.show(lineArray[1]);
+                break;
             default:
                 console.log("No command like that exists");
                 printMenu();
@@ -63,7 +70,11 @@ function printMenu() {
           + "  = Opens the menu of choices\n"
           + "showAccounts                                             "
           + "  = Shows all account holders with their accounts\n"
-          + "showInterest<rate>                                             "
-          + " = Shows the accumulated interest together with the accounts"
+          + "showInterest<rate>                                        "
+          + " = Shows the accumulated interest together with the accounts\n"
+          + "showInterestDay<day>                                      "
+          + " = Shows the accumulated interest for a day\n"
+          + "showInterestYear<Year>                                    "
+          + " = Shows the accumulated interest for a Year\n"
     );
 }

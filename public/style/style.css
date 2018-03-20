@@ -6,15 +6,11 @@
 
 /* Body properties */
 body {
-    margin: 0px auto;
+    margin: 1px auto;
     font-family: Arial;
     padding: 10px;
     background: #f1f1f1;
     width: 1200px;
-}
-
-/* link hover color */
-li a:hover:not(.active) {
 }
 
 /* Header/Blog Title */
@@ -54,6 +50,7 @@ li a:hover:not(.active) {
 }
 
 /* Create two unequal columns that floats next to each other */
+
 /* Left column */
 .leftcolumn {
     float: left;
@@ -84,6 +81,7 @@ li a:hover:not(.active) {
 .navLeft {
     color: green;
 }
+
 /* Add a card effect for articles */
 .card {
     background-color: white;
@@ -107,12 +105,12 @@ li a:hover:not(.active) {
 /* Add a card effect for articles */
 .card2 {
     background-color: white;
-    padding: 20px 350px 20px 350px;
+    padding: 20px 350px;
     margin-top: 20px;
 }
 
 /* Clear floats after the columns */
-.row:after {
+.row::after {
     content: "";
     display: table;
     clear: both;
@@ -128,7 +126,8 @@ li a:hover:not(.active) {
 }
 
 /* Input style */
-input[type=text], select {
+input[type=text],
+select {
     width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -139,7 +138,8 @@ input[type=text], select {
 }
 
 /* Input style */
-input[type=password], select {
+input[type=password],
+select {
     width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -150,7 +150,8 @@ input[type=password], select {
 }
 
 
-input[type=date], select {
+input[type=date],
+select {
     width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -162,7 +163,8 @@ input[type=date], select {
 }
 
 /* Input style */
-input[type=number], select {
+input[type=number],
+select {
     width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -220,19 +222,28 @@ input[type=submit]:hover {
 }
 
 #customers {
-    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-family:
+    "Trebuchet MS",
+    Arial,
+    Helvetica,
+    sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-#customers td, #customers th {
+#customers td,
+#customers th {
     border: 1px solid #ddd;
     padding: 8px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
-#customers tr:hover {background-color: #ddd;}
+#customers tr:hover {
+    background-color: #ddd;
+}
 
 #customers th {
     padding-top: 12px;

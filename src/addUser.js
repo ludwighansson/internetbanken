@@ -12,9 +12,7 @@ const addUser =
         ort = ort.trim();
         pinkod = pinkod.trim();
 
-        let str;
-
-        str = await addCustomer(db, fornamn, efternamn, fodd, adress, ort, pinkod);
+        await addCustomer(db, fornamn, efternamn, fodd, adress, ort, pinkod);
         return;
     }
 

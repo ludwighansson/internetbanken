@@ -8,9 +8,7 @@ const shareAccount =
         kundId = kundId.trim();
         kontoId = kontoId.trim();
 
-        let str;
-
-        str = await shareAccountWithUser(db, kundId, kontoId);
+        await shareAccountWithUser(db, kundId, kontoId);
         return;
     }
 

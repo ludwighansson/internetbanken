@@ -131,11 +131,11 @@ async function depositMoney(amount, accID) {
 }
 
 async function swish(userID, userPIN, recieverID, ownBankId, amount) {
-        let sql = `CALL swish(?,?,?,?,?)`;
-        let res;
+    let sql = `CALL swish(?,?,?,?,?)`;
+    let res;
 
-        res = await db.query(sql, [userID, userPIN, recieverID, ownBankId, amount]);
-        return res;
+    res = await db.query(sql, [userID, userPIN, recieverID, ownBankId, amount]);
+    return res;
 }
 
 async function accumulatedInterest(accID, interestRate) {

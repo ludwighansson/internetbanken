@@ -46,7 +46,7 @@ function accountsAsTable(res) {
         str += "  | " + row.saldo.toString().padEnd(5);
         str += "   | " + row.holder.padEnd(30);
         str += "| \n";
-}
+    }
     str += "+----------------+---------+-------------------------------+";
 
     return str;

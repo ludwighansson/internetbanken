@@ -197,10 +197,10 @@ router.get("/swish", (req, res) => {
 });
 
 router.post("/swish", urlencodedParser, async (req, res) => {
-        await bank.swish(req.body.ownId, req.body.pinkod,
+    await bank.swish(req.body.ownId, req.body.pinkod,
         req.body.tillIdBankkonto, req.body.franIdBankkonto, req.body.transaktionsPeng);
 
-        res.redirect("/bank/swish-complete");
+    res.redirect("/bank/swish-complete");
 });
 
 router.get("/swish-complete", (req, res) => {
@@ -240,7 +240,7 @@ router.post("/accumulatedInterest/:id", urlencodedParser, async (req, res) => {
         title: "Show interest",
         user: req.session.kundID,
         accID: id
-    }
+    };
 
     data.res = await bank.accumulatedInterest(req.body.accID, req.body.interestRate);
     res.render("bankIndex/showAccumulatedInterest", data);

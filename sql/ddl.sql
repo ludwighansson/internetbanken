@@ -441,3 +441,21 @@ BEGIN
 END
 ;;
 DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS showCalculateForDay;
+DELIMITER ;;
+CREATE PROCEDURE showCalculateForDay(
+	aDay int(4)
+)
+BEGIN
+	Select * FROM calculateLogg
+    WHERE DAY(tid) = aDay;
+END
+;;
+DELIMITER ;
+
+
+
+
